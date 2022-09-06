@@ -8,7 +8,7 @@ class Job(models.Model):
     title = models.CharField(max_length=255, default='')
     tags = models.TextField(default='')
     date = models.DateField(default='')
-    img = models.ImageField(upload_to='static/media/upload/thumbnail', default='')
+    img = models.ImageField(upload_to='static/media', default='')
 
     def __str__(self):
         return (str(self.title))
@@ -21,7 +21,7 @@ class Gallery(models.Model):
 
     job = models.ForeignKey(Job, on_delete=models.CASCADE, default='')
     order = models.IntegerField(default=1) 
-    img = models.ImageField(upload_to='static/media/upload/photos', default='')
+    img = models.ImageField(upload_to='static/media', default='')
 
     def __str__(self):
         return (str(self.job))

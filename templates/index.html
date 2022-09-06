@@ -154,7 +154,7 @@
                 <div class="works-buttons works-buttons-left"><i class="bi bi-chevron-left"></i></div>
                 <div class="works-buttons works-buttons-right"><i class="bi bi-chevron-right"></i></div>
                 {% for job in jobs %}
-                    <div class="work-block" type="button" data-bs-toggle="modal" data-bs-target="#id{{ job.id }}" style="background-image: url('{{job.img}}');">
+                    <div class="work-block" type="button" data-bs-toggle="modal" data-bs-target="#id{{ job.id }}" style="background-image: url('{{job.img.url}}');">
                         <span class="work-block-tags">{{ job.tags }}</span>
                         <!-- <p>{{ job.date.month }}/{{ job.date.year }}</p>
                         <div class="tags"></div> -->
@@ -184,7 +184,7 @@
                                         {% for photo in photos %} 
                                             {% if photo.job == job %}
                                                 <div class="carousel-item">
-                                                    <img src="{{ photo.img }}" alt="{{ photo.job }}">
+                                                    <img src="{{ photo.img.url }}" alt="{{ photo.job }}">
                                                 </div>
                                             {% endif %}
                                         {% endfor %}
