@@ -179,7 +179,7 @@
                                     </div>
                                     <div class="carousel-inner">
                                         <div class="carousel-item active">
-                                            <img src="{% if debug %}{{ job.img.url }}{% else %}{{ job.img }}{% endif %}" alt="{{ job.title }}">
+                                            <img src="{{ job.img.url }}" alt="{{ job.title }}">
                                         </div>
                                         {% for photo in photos %} 
                                             {% if photo.job == job %}
