@@ -102,11 +102,11 @@ function worksSlides(){
         positions = ['155px'];
         position_lenght = 405
         lg = 4;
-    } else if (screen.width <= 768 & screen.width > 375) {
+    } else if (screen.width <= 768 & screen.width > 480) {
         positions = ['130.5px'];
         position_lenght = 256
         lg = 3;
-    } else if (screen.width <= 375){
+    } else if (screen.width <= 480){
         positions = ['65px'];
         position_lenght = 125
         lg = 3;
