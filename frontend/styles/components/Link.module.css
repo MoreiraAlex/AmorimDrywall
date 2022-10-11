@@ -1,0 +1,15 @@
+.link{
+    text-transform: uppercase;
+    font-weight: 600;
+    color: var(--color-light);
+    border: none;
+}
+
+.link:hover{
+    color: var(--color-base);
+    transition: all 700ms;
+}
+
+.link_reduce {
+    color: var(--black);
+}

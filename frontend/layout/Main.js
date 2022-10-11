@@ -13,6 +13,7 @@
 export default function Main() {
   return (
     <main>
+      <div style={{backgroundColor: 'lightgray', height: '1720px'}}></div>
       {/* <section className={styles.content1}>
         <div className={styles.area1}>
           <h2>Vamos juntos fazer o seu marketing digital ter resultados da geração de leads até a venda</h2>
