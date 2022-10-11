@@ -17,14 +17,14 @@ export default function Head() {
       <meta name="author" content="Alex Moreira" />
       <meta name="reply-to" content="alexmoreira.dev@gmail.com" />
 
-      <meta name='description' content='Agência de Marketing Digital / Gerenciamento em Redes Sociais / Campanhas Google ADS / Criação de Sites / Planejamento de Marketing Digital'/>
+      {/* <meta name='description' content='Agência de Marketing Digital / Gerenciamento em Redes Sociais / Campanhas Google ADS / Criação de Sites / Planejamento de Marketing Digital'/>
 
-      <meta name="keywords" content="o que é leads no marketing digital, Marketing digital, Agência de marketing, Agência, Fundador, gestor de trafego, Home office, vivendo de home office, amagency, redes sociais, landing page, criação de sites, empresa de criação de sites, design, web design"/>
+      <meta name="keywords" content="o que é leads no marketing digital, Marketing digital, Agência de marketing, Agência, Fundador, gestor de trafego, Home office, vivendo de home office, amagency, redes sociais, landing page, criação de sites, empresa de criação de sites, design, web design"/> */}
 
-      <link rel="canonical" href="https://amagency.alexmoreira.dev.br/" />
-      <link rel="icon" href="/favicon.png" />
+      <link rel="canonical" href="https://amorimdrywall.alexmoreira.dev.br/" />
+      <link rel="icon" href="/favicon.ico" />
 
-      <title>AMAgency</title>
+      <title>Amorim Drywall</title>
     </NextHead>
   )
 }

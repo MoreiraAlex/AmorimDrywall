@@ -7,18 +7,7 @@ import Logo from '../components/Logo'
 import Link from '../components/Link'
 import Icon from '../components/Icon'
 
-export default function Header() {
-
-  const [offset, setOffset] = useState(0);
-
-  useEffect(() => {
-      const onScroll = () => setOffset(window.pageYOffset);
-
-      window.removeEventListener('scroll', onScroll);
-      window.addEventListener('scroll', onScroll, { passive: true });
-      return () => window.removeEventListener('scroll', onScroll);
-
-    }, []);
+export default function Header({offset}) {
 
   return (
     <header>
