@@ -1,8 +1,8 @@
-// import styles from '../styles/layout/Main.module.css'
+import styles from '../styles/layout/Main.module.css'
 
 // import Input from '../components/Input'
 // import Btn from '../components/Button'
-// import Icon from '../components/Icon'
+import Icon from '../components/Icon'
 // import Step from '../components/Step'
 
 // import step1 from '../public/Analysis.png'
@@ -13,7 +13,9 @@
 export default function Main() {
   return (
     <main>
-      <div style={{backgroundColor: 'lightgray', height: '1720px'}}></div>
+      <section id={styles.home}>
+        <a href="#about">&#xF279;</a>
+      </section>
       {/* <section className={styles.content1}>
         <div className={styles.area1}>
           <h2>Vamos juntos fazer o seu marketing digital ter resultados da geração de leads até a venda</h2>
