@@ -1,14 +1,6 @@
 import styles from '../styles/layout/Main.module.css'
 
-// import Input from '../components/Input'
-// import Btn from '../components/Button'
 import Icon from '../components/Icon'
-// import Step from '../components/Step'
-
-// import step1 from '../public/Analysis.png'
-// import step2 from '../public/VideoCall.png'
-// import step3 from '../public/collaboration.png'
-// import step4 from '../public/Agreement.png'
 
 export default function Main() {
   return (
@@ -16,77 +8,101 @@ export default function Main() {
       <section id={styles.home}>
         <a href="#about">&#xF279;</a>
       </section>
-      {/* <section className={styles.content1}>
-        <div className={styles.area1}>
-          <h2>Vamos juntos fazer o seu marketing digital ter resultados da geração de leads até a venda</h2>
-          <div className={styles.area}>
-            <h2>Solicite um orçamento</h2>
-            <form>
-              <Input type='text' placeholder='Nome'/>
-              <Input type='email' placeholder='E-mail'/>
-              <Input type='tel' placeholder='Telefone'/>
-              <label><textarea placeholder='Mais informações'></textarea></label>
-              <Btn width='40%' height='10%'>Enviar</Btn>
-            </form>
-          </div>
-        </div>
-        <div className={styles.area2}>
-          <p>Nós podemos ajudar você tambem</p>
-          <div>
-            <Icon size='40px' color='#C4C4C4'>&#xF231;</Icon>
-            <Icon size='40px' color='#C4C4C4'>&#xF231;</Icon>
-            <Icon size='40px' color='#C4C4C4'>&#xF231;</Icon>
-          </div>
-        </div>
+      <section id="about" className={styles.about}>
+            <div></div>
+            <div>
+                <h2>Sobre nós</h2>
+                <p>
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Nesciunt molestiae adipisci vero odit totam ex et, eius aperiam aliquid doloribus eveniet, architecto, saepe alias possimus voluptates at reprehenderit libero delectus.
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequatur facilis eius laborum saepe doloremque eligendi provident repudiandae molestias, ipsum placeat voluptatem perferendis sequi eos quae voluptas officia, at consequuntur unde.
+                </p>
+            </div>
       </section>
-      <section className={styles.content2}>
-        <div className={styles.first}>
-          <div>
-            <p>
-              “A parceria com a AMAgency veio num momento importante. Em menos de um ano vimos ganhos extraordinários.”
-            </p>
-            <h3>Juliana U., Sócio fundador, TST</h3>
-          </div>
-          <div>
-            <p>
-              “A AMAgency tem uma proposta de trabalho muito legal, são bastante organizados e muito atualizados com as tendências de hoje.”
-            </p>
-            <h3>Danielle B., Fundador do BcB</h3>
-          </div>
-          <div>
-            <p>
-              “Estamos muito satisfeitos com o trabalho realizado até aqui e esperamos que nossa parceria prospere por muitos anos.”
-            </p>
-            <h3>Nelson R., Gerente de Marketing da MS</h3>
-          </div>
-        </div>
-        <div className={styles.second}>
-          <Icon size='40px' color='#C4C4C4'>&#xF231;</Icon>
-          <h2>Entenda nosso processo<br/>logo após o pedido de orçamento</h2>
-          <Icon size='40px' color='#C4C4C4'>&#xF22D;</Icon>
-        </div>
-        <div className={styles.third}>
-          <span className={styles.line}></span>
-          <ul>
-            <li>
-              <Step src={step1} alt='Imagem do passo 1' width='120px' height='120px'/>
-              <p>1. Uma equipe especializada analisa seu pedido.</p>
-            </li>
-            <li>
-              <Step src={step2} alt='Imagem do passo 2' width='120px' height='120px'/>
-              <p>2. Realizamos uma ligação com você para entender todos os detalhes da sua demanda.</p>
-            </li>
-            <li>
-              <Step src={step3} alt='Imagem do passo 3' width='120px' height='120px'/>
-              <p>3. Apresentamos uma proposta com base em todas as informações e analise realizada.</p>
-            </li>
-            <li>
-              <Step src={step4} alt='Imagem do passo 4' width='120px' height='120px'/>
-              <p>4. Formalizamos o contrato e início das atividades.</p>
-            </li>
-          </ul>
-        </div>
-      </section> */}
+      <section className={styles.call}>
+            <div>
+                <span>Solicite seu orçamento pelo Whatsapp</span>
+                <a href=" https://wa.me/5513988393565" target="_blank">
+                  <Icon size='4rem'>&#xF618;</Icon>
+                </a>
+            </div>
+            <div>
+                <span>Visite nossas redes sociais</span>
+                <a href="https://www.instagram.com/amorim_drywall/?hl=pt-br" target="_blank">
+                  <Icon size='4rem'>&#xF437;</Icon>
+                </a>
+            </div>
+        </section>      
+        <section id="services" className={styles.services}>
+            <h2>Serviços</h2>
+            <div>
+                <div>
+                    <div>
+                      <div className={styles.ilha}></div>
+                    </div>
+                    <div>
+                        <h3>Ilha</h3>
+                        <p>
+                            A Ilha de Drywall é um serviço inovador e ao mesmo tempo clássico, proporcionando um lindo acabamento, deixando o ambiente que quiser com o design que deseja.
+                        </p>
+                    </div>
+                </div>
+                <div>
+                    <div>
+                      <div className={styles.sanca}></div>
+                    </div>
+                    <div>
+                        <h3>Sanca</h3>
+                        <p>
+                          A sanca de drywall, é o que há de moderno quando o assunto é decoração de ambientes, pois permite que sejam feitos vários tipos de formas e desenhos no ambiente.
+                        </p>
+                    </div>
+                </div>
+                <div>
+                    <div>
+                      <div className={styles.cortineiro}></div>
+                    </div>
+                    <div>
+                        <h3>Cortineiro</h3>
+                        <p>
+                          O cortineiro aproveita o forro de Drywall já construído e a cortina é instalada entre a parede e o forro. É um modelo mais moderno e quando iluminado, fica ainda mais charmoso e aconchegante!
+                        </p>
+                    </div>
+                </div>
+                <div>
+                    <div>
+                      <div className={styles.forro}></div>
+                    </div>
+                    <div>
+                        <h3>Forro</h3>
+                        <p>
+                          O forro de Drywall é uma vedação indicada para edifícios residenciais e comerciais, o produto é leve, sustentável, fácil de se trabalhar e que não gera entulho.
+                        </p>
+                    </div>
+                </div>
+                <div>
+                    <div>
+                      <div className={styles.divisorias}></div>
+                    </div>
+                    <div>
+                        <h3>Divisórias</h3>
+                        <p>
+                          A divisória de Drywall é um sistema de construção de gesso acartonado que confere rápida e fácil instalação, sem sujeira, com muitas possibilidades de uso.
+                        </p>
+                    </div>
+                </div>
+                <div>
+                    <div>
+                      <div className={styles.reparos}></div>
+                    </div>
+                    <div>
+                        <h3>Reparos</h3>
+                        <p>
+                          Os reparos em revestimentos, paredes e tetos de drywall são mais simples, além de mais rápidos e limpos do que os serviços realizados em alvenaria.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
     </main>
   )
 }

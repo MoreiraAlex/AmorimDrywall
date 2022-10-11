@@ -33,7 +33,7 @@ export default function Header() {
             <Link link='#about' offset={offset}>sobre nós</Link>
           </li>
           <li>
-            <Link link='#service' offset={offset}>serviços</Link>
+            <Link link='#services' offset={offset}>serviços</Link>
           </li>
           <li>
             <Link link='#galery' offset={offset}>galeria</Link>

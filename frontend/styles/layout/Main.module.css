@@ -1,3 +1,7 @@
+/*======================================
+    HOME
+======================================*/
+
 #home {
     height: 100vh;
     background-image: url(../../public/home.jpg);
@@ -37,3 +41,200 @@
 }
 
 @keyframes homeBTN{0%{transform: scale(100%);}50%{transform: scale(110%);}100%{transform: scale(100%);}}
+
+
+/*======================================
+    ABOUT
+======================================*/
+
+.about{
+    display: flex;
+    flex-direction: row;
+    padding: 6.5rem 10.5rem;
+    gap: 4rem;
+    height: 720px;
+}
+
+.about > div:first-of-type{
+    background-image: url(../../public/about.webp);
+    width: 40%;  
+    background-size: cover; 
+    background-position: 40%;
+}
+
+.about > div:last-of-type{
+    width: 60%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 2.5rem;
+}
+
+.about > div:last-of-type h2{
+    font-size: 4rem;
+    border-bottom: 5px solid var(--color-base);
+}
+
+.about > div:last-of-type p{
+    font-size: 1.5rem;
+} 
+
+
+/*======================================
+    CALL ACTION
+======================================*/
+.call{
+    background-image: url(../../public/backgroundCall.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end; 
+    gap: 1rem;
+    padding: 1.5rem 0;
+    padding-right: 25%;
+    position: relative;
+}
+
+.call::after{
+    content: "";
+    width: 100%;
+    height: 100%;
+    background-color: var(--white);
+    opacity: 10%;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.call div{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 4rem;
+    z-index: 1;
+}
+
+.call span{
+    color: var(--color-light);
+    font-size: 2.5rem;
+}
+
+
+/*======================================
+    SERVICES
+======================================*/
+
+.services {
+    padding: 4rem 0;
+    display: flex;
+    flex-direction: column;
+    gap: 2.5rem;
+    align-items: center;
+}
+
+.services h2{
+    font-size: 4rem;
+    border-bottom: 5px solid var(--color-base);
+}
+
+.services > div:first-of-type{
+    width: 96%;
+    margin: auto;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    row-gap: 2.5rem;
+    column-gap: 6.5rem;
+}
+
+.services > div:first-of-type > div{
+    width: 20%;
+    display: flex;
+    flex-direction: column;
+    text-align: start;
+    box-shadow: 0 1px 4px hsl(0, 0%, 70%);  
+}
+
+
+.services > div:first-of-type > div > div:first-of-type{
+    height: 250px;
+    overflow: hidden;
+    position: relative;
+}
+
+.services > div:first-of-type > div > div:first-of-type::after{
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    bottom: 0;
+    background-color: var(--black);
+    opacity: 40%;
+}
+
+.services > div:first-of-type > div > div:first-of-type > div{
+    height: 100%;
+    background-size: cover;
+}
+
+.services > div:first-of-type > div > div:last-of-type{
+    height: 250px;
+    border: 1px solid hsl(0, 0%, 96%);
+    padding: 1rem;    
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+
+.services > div:first-of-type > div > div:last-of-type h3{
+    font-size: 1.8rem;
+    color: var(--color-base);
+}
+
+.services > div:first-of-type > div > div:last-of-type p{
+    color: gray;
+}
+
+.services > div:first-of-type > div:hover > div:first-of-type > div{
+    transform: scale(105%);
+    transition: transform 700ms;
+}
+
+.services > div:first-of-type > div:hover > div:last-of-type{
+    background-color: hsl(0, 0%, 96%);  
+    border-color: var(--white);
+    transition: background-color 700ms ease-out;
+}
+
+.ilha {
+    background-image: url('../../public/Ilha.jpg');
+    background-position: 50%;
+}
+
+.sanca {
+    background-image: url('../../public/Sanca.png');
+    background-position: 50%;
+}
+
+.cortineiro {
+    background-image: url('../../public/Cortineiro.jpg');
+    background-position: 40%;
+}
+
+.forro {
+    background-image: url('../../public/Forro.jpg');
+    background-position: 100%;
+}
+
+.divisorias {
+    background-image: url('../../public/Divisórias.webp');
+}
+
+.reparos {
+    background-image: url('../../public/Reparos.jpg');
+}
