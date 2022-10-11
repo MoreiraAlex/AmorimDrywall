@@ -6,13 +6,13 @@ import Footer from '../layout/Footer'
 export default function Policy() {
   return (    
     <>
-        <Header offset={51}/>
+        <Header reduce={true}/>
 
         <section className={styles.policy}>
             <div>
                 <h1>Política de Privacidade</h1>
                 <p>
-                    A sua privacidade é importante para nós. É política do site AmorimDrywall respeitar a sua privacidade em relação a qualquer informação sua que possamos coletar no site {/*<a href="https://amorimdrywall.alexmoreira.dev.br/" target="_blank" rel="noopener">AmorimDrywall</a>*/}, e outros sites que possuímos e operamos.
+                    A sua privacidade é importante para nós. É política do site AmorimDrywall respeitar a sua privacidade em relação a qualquer informação sua que possamos coletar no site <strong>AmorimDrywall</strong>, e outros sites que possuímos e operamos.
                 </p>
                 <p>
                     Trabalhamos com base na Lei de Proteção de Dados (13.709/2018) que traz garantias de privacidade, confidencialidade, retenção, proteção aos direitos fundamentais de liberdade e  o livre desenvolvimento da personalidade da pessoa. Além disso, respeitamos a Constituição Federal da República Federativa do Brasil, o Código de Defesa do Consumidor (Lei 8.078/90), Marco Civil da Internet (Lei 12.965/14).

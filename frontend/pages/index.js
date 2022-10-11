@@ -6,20 +6,23 @@ import { useEffect, useState } from 'react'
 
 export default function Index() {
 
-  const [offset, setOffset] = useState(0);
-
+  const [reduce, setReduce] = useState(false);
+  
   useEffect(() => {
-      const onScroll = () => setOffset(window.pageYOffset);
-
-      window.removeEventListener('scroll', onScroll);
-      window.addEventListener('scroll', onScroll, { passive: true });
-      return () => window.removeEventListener('scroll', onScroll);
+    const navReduce = () => {
+      if(window.scrollY >= 50){
+        setReduce(true)
+      } else {
+        setReduce(false)
+      }
+    }
+    window.addEventListener('scroll', navReduce)
 
   }, []);
 
   return (
     <>
-      <Header offset={offset}/>
+      <Header reduce={reduce}/>
       <Main />
       <Footer/>
     </>

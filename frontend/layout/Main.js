@@ -2,11 +2,15 @@ import styles from '../styles/layout/Main.module.css'
 
 import Icon from '../components/Icon'
 
+import { Link } from 'react-scroll'
+
 export default function Main() {
   return (
     <main>
-      <section id={styles.home}>
-        <a href="#about">&#xF279;</a>
+      <section id='home' className={styles.home}>
+        <Link to='about' spy={true} smooth={true} offset={0} duration={800}>
+          &#xF279;
+        </Link>
       </section>
       <section id="about" className={styles.about}>
             <div></div>

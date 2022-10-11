@@ -8,8 +8,14 @@
 .link:hover{
     color: var(--color-base);
     transition: all 700ms;
+    cursor: pointer;
 }
 
 .link_reduce {
     color: var(--black);
+}
+
+.active {
+    padding-bottom: 5px;
+    border-bottom: 2px solid var(--color-base);
 }
