@@ -8,12 +8,8 @@ import logoReduce from '../public/LogoReduce.png'
 export default function Logo({offset}){
     return(
         <div className={styles.Logo}>
-            { offset > 50 
-            ?
-                <Image src={logoReduce} alt='Logo' width='70px' height='55'/>                
-            :
-                <Image src={logo} alt='Logo' width='100px' height='100px' />
-            }
+            { offset > 50 ? <Image src={logoReduce} alt='Logo' width='70px' height='55'/> : 
+                            <Image src={logo} alt='Logo' width='100px' height='100px' />}
         </div>
     )
 }
