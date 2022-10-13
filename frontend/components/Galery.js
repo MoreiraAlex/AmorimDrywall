@@ -3,7 +3,7 @@ import styles from '../styles/components/Galery.module.css'
 import { useState } from 'react';
 
 import PhotoModal from './PhotoModal';
-import * as Data from '../data/Job.json'
+import * as Data from '../public/data/Job.json'
 
 export default function Galery(){    
 

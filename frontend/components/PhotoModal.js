@@ -2,7 +2,7 @@ import styles from '../styles/components/PhotoModal.module.css'
 
 import Image from 'next/image'
 
-import * as Data from '../data/Photos.json'
+import * as Data from '../public/data/Photos.json'
 import { useRef } from 'react'
 
 
