@@ -262,6 +262,7 @@
 }
 
 .galery > p{
+    text-align: center;
     font-size: 2rem;
     color: gray;
     margin: auto;
@@ -348,6 +349,10 @@
     .services > div:first-of-type{
         padding: 0 5vw;
     }
+
+    .galery > p{
+        font-size: 1.5rem;
+    }
 }
 
 @media (max-width: 600px) {
@@ -375,6 +380,10 @@
     .services > div:first-of-type > div > div:last-of-type{
         height: 200px;
     }
+
+    .galery > p{
+        font-size: 1.2rem;
+    }
 }
 
 @media (max-width: 480px) {
@@ -384,7 +393,11 @@
     }
 
     .call div{
-        gap: 1rem;
+        gap: 0.5rem;
+    }
+
+    .call span{
+        font-size: 1rem;
     }
 
     .services > div:first-of-type{
@@ -407,15 +420,14 @@
     .services > div:first-of-type > div > div:first-of-type{
         height: 200px;
     }
-}
 
-@media (max-width: 480px) {
-    .call span{
-        font-size: 1rem;
+    .galery{
+        gap: 2rem;
     }
 
-    .call div{
-        gap: 0.5rem;
+    .galery > p{
+        padding: 25px;
+        font-size: 1.1rem;
     }
 }
 
