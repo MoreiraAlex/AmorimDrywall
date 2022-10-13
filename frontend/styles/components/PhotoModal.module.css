@@ -1,0 +1,70 @@
+.container {
+    position: fixed;
+    width: 100%;
+    height: 100vh;
+    top: 0;
+    left: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(255, 255, 255, 0.8);
+    z-index: 5;
+} 
+
+.modal {
+    width: 80vw;
+    position: absolute;
+    z-index: 5;
+}
+
+
+
+.slider {
+    display: flex;
+    overflow-x: auto;
+    scroll-behavior: smooth;
+    width: 100%;
+}
+
+.slider::-webkit-scrollbar {
+    display: none;
+}
+
+.img {
+    flex: none;
+    width: 33%;
+    padding: 20px;
+}
+
+
+.button {
+    position: absolute;
+    left: -5%;
+    width: 110%;
+    height: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.button button{
+    background-color: transparent;
+    border: none;
+}
+
+.button button i{
+    color: var(--black);
+    font-size: 50px;
+}
+
+.button button i:hover{
+    cursor: pointer;
+    color: lightgray;
+    transition: 700ms;
+}
+
+.button button i:active{
+    cursor: pointer;
+    color: gray;
+    transition: 200ms;
+}

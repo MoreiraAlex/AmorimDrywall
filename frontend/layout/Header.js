@@ -17,13 +17,13 @@ export default function Header({reduce}) {
         </Link>
         <ul>
           <li>
-            <NavLink link='about' offset='0' duration='800' reduce={reduce}>sobre nós</NavLink>
+            <NavLink link='about' offset={0} duration={800} reduce={reduce}>sobre nós</NavLink>
           </li>
           <li>
-            <NavLink link='services' offset='0' duration='800' reduce={reduce}>serviços</NavLink>
+            <NavLink link='services' offset={-50} duration={800} reduce={reduce}>serviços</NavLink>
           </li>
           <li>
-            <NavLink link='galery' offset='0' duration='800' reduce={reduce}>galeria</NavLink>
+            <NavLink link='galery' offset={-50} duration={800} reduce={reduce}>galeria</NavLink>
           </li>
         </ul>
         <ul>

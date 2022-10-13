@@ -1,6 +1,7 @@
 import styles from '../styles/layout/Main.module.css'
 
 import Icon from '../components/Icon'
+import Galery from '../components/Galery'
 
 import { Link } from 'react-scroll'
 
@@ -106,6 +107,11 @@ export default function Main() {
                     </div>
                 </div>
             </div>
+        </section>
+        <section id="galery" className={styles.galery}>
+            <h2>Galeria</h2>
+            <p>Conheça ainda mais sobre meu trabalho !</p>
+            <Galery/>
         </section>
     </main>
   )

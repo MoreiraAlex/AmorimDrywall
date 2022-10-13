@@ -1,0 +1,26 @@
+[
+    {
+        "id": 1, 
+        "url": "https://i.pinimg.com/564x/0c/5b/60/0c5b60f33544c840edb7c9cf0be1f270.jpg", 
+        "descricao": "Trabalho feito em todos os comodos da casa.", 
+        "tags": ["Sanca", "Forro", "Ilha", "Cortineiro"]
+    },
+    {
+        "id": 2, 
+        "url": "https://i.pinimg.com/564x/14/07/c4/1407c4d2c88fce2e5fc2203895210abf.jpg", 
+        "descricao": "Forro da sala do apartamento na beira da praia.", 
+        "tags": ["Sanca aberta", "Forro"]
+    },
+    {
+        "id": 3, 
+        "url": "https://i.pinimg.com/564x/8e/97/68/8e9768b2e1a040fbb07957883a2b02e0.jpg", 
+        "descricao": "Galpão industrial.", 
+        "tags": ["Sanca", "Forro", "Divisória"]
+    },
+    {
+        "id": 4, 
+        "url": "https://i.pinimg.com/564x/27/70/71/27707149d86f0ac1b98a964879215d53.jpg", 
+        "descricao": "Divisória entre quartos.", 
+        "tags": ["Diviória", "Pintura"]
+    }
+]

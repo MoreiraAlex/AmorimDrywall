@@ -1,0 +1,66 @@
+.galery{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.card{
+    height: 500px;
+    width: 25%;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 25px 30px;
+    gap: 10px;
+}
+
+.card::after{
+    position: absolute;
+    content: "";
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+    background-color: var(--black);
+    opacity: 50%;
+}
+
+.card div {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.card div span{
+    position: relative;
+    z-index: 1;
+    font-size: 1rem;
+    text-transform: capitalize;
+    color: var(--white);
+    font-size: 1.3rem;
+    display: none;
+}
+
+.card p{
+    position: relative;
+    z-index: 1;
+    font-size: 1rem;
+    color: var(--white);
+    font-size: 1rem;
+    margin: 0;
+    display: none;
+}
+
+.card:hover div span, .card:hover p {
+    cursor: pointer;
+    display: inline;
+}
+
+.card:hover::after {
+    cursor: pointer;
+    opacity: 80%;
+    transition: 700ms;
+}
