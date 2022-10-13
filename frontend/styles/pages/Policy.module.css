@@ -35,3 +35,29 @@
     margin-left: 20px;
 }
 
+
+@media (max-width: 720px){
+    .policy {
+        padding: 50px;
+        padding-top: 100px;
+        padding-bottom: 0px;
+    }
+    
+}
+
+@media (max-width: 500px){
+    .policy p , .policy li {
+        font-size: 90%;
+    }
+
+}
+
+@media (max-width: 400px){
+
+    .policy {
+        padding: 25px;
+        padding-top: 75px;
+        padding-bottom: 0px;
+    }
+}
+

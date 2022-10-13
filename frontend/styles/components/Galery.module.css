@@ -83,6 +83,16 @@
         height: 70vh;
         width: 50%;
     }
+
+    .card div span, .card p {
+        display: inline;
+    }
+    
+    .card::after {
+        cursor: pointer;
+        opacity: 80%;
+        transition: 700ms;
+    }
 }
 
 @media (max-width: 500px) {
@@ -90,5 +100,9 @@
     .card {
         height: 45vh;
         min-width: 150px;
+    }
+
+    .card p{
+        display: none;
     }
 }

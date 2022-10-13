@@ -3,10 +3,12 @@ import styles from '../styles/components/PhotoModal.module.css'
 import Image from 'next/image'
 
 import * as Data from '../public/data/Photos.json'
-import { useRef } from 'react'
+import { useRef, useState } from 'react'
 
 
 export default function PhotoModal({modal, close, photoId}){
+
+    const [isDown, setIsDown] = useState(false);
 
     const slider = useRef(null);
     const itm = useRef(null);
@@ -22,6 +24,7 @@ export default function PhotoModal({modal, close, photoId}){
 
     }
 
+
     const closeModal = (e) => {
         if(e.target.id == 'canClose'){
             close()
@@ -31,19 +34,18 @@ export default function PhotoModal({modal, close, photoId}){
 
    const photos = Data.filter((photo) => photo.idPai == photoId)
 
-
     return(
         <>
             {modal ? 
                 <div id='canClose' className={styles.container} onClick={closeModal}>
                     <div className={styles.modal}>
-                        <div className={styles.button}>
+                        <div className={styles.button} >
                             <button onClick={toLeft}><i class="bi bi-chevron-left"></i></button>
                             <button onClick={toRight}><i class="bi bi-chevron-right"></i></button>
                         </div>
                         <div className={styles.slider} ref={slider}>
                             {photos.map(item =>
-                                <img key={item.id} src={item.url} className={styles.img} ref={itm}/>
+                                <img key={item.id} src={item.url} className={styles.img} ref={itm} />
                                 )}
                         </div>
                     </div>
