@@ -16,7 +16,8 @@ export default function PhotoModal({modal, close, photoId}){
 
     }
 
-    function toRight(){
+    const toRight = (e) => {
+        e.preventDefault()
         slider.current.scrollLeft += itm.current.offsetWidth;
 
     }
@@ -36,7 +37,7 @@ export default function PhotoModal({modal, close, photoId}){
             {modal ? 
                 <div id='canClose' className={styles.container} onClick={closeModal}>
                     <div className={styles.modal}>
-                        <div id='canClose' className={styles.button}>
+                        <div className={styles.button}>
                             <button onClick={toLeft}><i class="bi bi-chevron-left"></i></button>
                             <button onClick={toRight}><i class="bi bi-chevron-right"></i></button>
                         </div>

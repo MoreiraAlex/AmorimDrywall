@@ -27,13 +27,13 @@ export default function Main() {
             <div>
                 <span>Solicite seu orçamento pelo Whatsapp</span>
                 <a href=" https://wa.me/5513988393565" target="_blank">
-                  <Icon size='4rem'>&#xF618;</Icon>
+                  <Icon size='3rem'>&#xF618;</Icon>
                 </a>
             </div>
             <div>
                 <span>Visite nossas redes sociais</span>
                 <a href="https://www.instagram.com/amorim_drywall/?hl=pt-br" target="_blank">
-                  <Icon size='4rem'>&#xF437;</Icon>
+                  <Icon size='3rem'>&#xF437;</Icon>
                 </a>
             </div>
         </section>      
