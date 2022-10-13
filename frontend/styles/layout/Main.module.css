@@ -8,6 +8,7 @@
     background-attachment: fixed;
     background-size: cover;
     background-repeat: no-repeat;
+    background-position: center;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -336,6 +337,10 @@
         width: 100%;
     }
 
+    .call {
+        background-position: 100%;
+    }
+
     .call span{
         font-size: 1.2rem;
     }
@@ -352,7 +357,7 @@
     }
 
     .call span{
-        font-size: 1rem;
+        font-size: 1.1rem;
     }
 
     .services > div:first-of-type > div{
@@ -379,7 +384,7 @@
     }
 
     .call div{
-        gap: 0.5rem;
+        gap: 1rem;
     }
 
     .services > div:first-of-type{
@@ -401,6 +406,16 @@
 
     .services > div:first-of-type > div > div:first-of-type{
         height: 200px;
+    }
+}
+
+@media (max-width: 480px) {
+    .call span{
+        font-size: 1rem;
+    }
+
+    .call div{
+        gap: 0.5rem;
     }
 }
 

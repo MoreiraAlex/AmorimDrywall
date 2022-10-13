@@ -71,22 +71,35 @@
 }
 
 
-@media (max-width: 720px) {
+@media (max-width: 950px) {
+    
     .footer > div:last-of-type{
         flex-direction: column;
         gap: 5px;
     }
-  
 }
 
-@media (max-width: 450px) {
+@media (max-width: 500px) {
     .footer > div:first-of-type > div > a:last-of-type{
         gap: 0;
+        font-size: 1rem;
+        padding: 10px;
+        justify-content: space-evenly;
+    }
+
+    .footer > div:first-of-type > div > a:last-of-type span{
+        font-size: 0.9rem;
+        width: 75px;
     }
 
     .footer > div:first-of-type > div > a:last-of-type i{
-        font-size: 30px;
+        font-size: 25px;
     }
+
+    .footer > div:last-of-type p, .footer > div:last-of-type a{
+        font-size: 0.75rem;
+    }
+    
   
 }
 

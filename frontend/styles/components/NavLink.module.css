@@ -7,7 +7,7 @@
 
 .link:hover{
     color: var(--color-base);
-    transition: all 700ms;
+    transition: color 700ms;
     cursor: pointer;
 }
 

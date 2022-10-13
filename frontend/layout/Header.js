@@ -1,7 +1,7 @@
 import styles from '../styles/layout/Header.module.css'
 
-import NextLink from 'next/link'
 import { Link } from 'react-scroll'
+import { useState } from 'react';
 
 import Logo from '../components/Logo'
 import NavLink from '../components/NavLink'
@@ -9,13 +9,15 @@ import Icon from '../components/Icon'
 
 export default function Header({reduce}) {
 
+  const [button, setButton] = useState(false);
+
   return (
     <header>
       <nav className={`${styles.nav} ${reduce ? styles.nav_reduce : styles.transition}`}>
         <Link to='home' spy={true} smooth={true} offset={0} duration={800}>
           <Logo reduce={reduce}/>
         </Link>
-        <ul>
+        <ul className={`${styles.mobile} ${button ? styles.mobile_active : null}`}>
           <li>
             <NavLink link='about' offset={0} duration={800} reduce={reduce}>sobre nós</NavLink>
           </li>
@@ -38,6 +40,11 @@ export default function Header({reduce}) {
             </a>
           </li>
         </ul>
+        <button onClick={() => {
+          button ? setButton(false) : setButton(true)
+        }}>
+          <i class="bi bi-list"></i>
+        </button>
       </nav>
     </header>
   )
