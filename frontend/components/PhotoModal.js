@@ -42,7 +42,7 @@ export default function PhotoModal({modal, close, photoId}){
                         </div>
                         <div className={styles.slider} ref={slider}>
                             {photos.map(item =>
-                                <img src={item.url} className={styles.img} ref={itm}/>
+                                <img key={item.id} src={item.url} className={styles.img} ref={itm}/>
                                 )}
                         </div>
                     </div>
