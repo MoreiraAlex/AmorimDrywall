@@ -13,6 +13,7 @@
 
 .modal {
     width: 80vw;
+    /* height: 100vh; */
     position: absolute;
     z-index: 5;
 }
@@ -32,9 +33,8 @@
 
 .img {
     flex: none;
-    width: 33%;
+    width: 33%;     
     padding: 15px;
-    /* min-width: 250px; */
 }
 
 
