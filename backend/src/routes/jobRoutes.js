@@ -1,15 +1,16 @@
 const router = require('express').Router()
 
-const { json } = require('express');
 const Job = require('../models/Job')
 
+const checkToken = require('../middlewares/checkToken')
 
-router.post('/', async (req, res) => {
+
+router.post('/', checkToken, async (req, res) => {
 
     const { name, desc } = req.body
 
     if(!name || !desc){
-        res.status(422).json({message: 'Todos os campos são obrigatórios'})
+        return res.status(422).json({message: 'Todos os campos são obrigatórios'})
     }
 
     const job = {
@@ -26,7 +27,7 @@ router.post('/', async (req, res) => {
 });
 
 
-router.get('/', async (req, res) => {
+router.get('/', checkToken, async (req, res) => {
 
     try {
          
@@ -39,7 +40,7 @@ router.get('/', async (req, res) => {
 });
 
 
-router.get('/:id', async (req, res) => {
+router.get('/:id', checkToken, async (req, res) => {
     
     const id = req.params.id
 
@@ -58,13 +59,13 @@ router.get('/:id', async (req, res) => {
 });
 
 
-router.patch('/:id', async (req, res) => {
+router.patch('/:id', checkToken, async (req, res) => {
 
     const id = req.params.id
     const { name, desc } = req.body
 
     if(!name && !desc){
-        res.status(422).json({message: 'Nenhuma atualização foi requisitada'})
+        return res.status(422).json({message: 'Nenhuma atualização foi requisitada'})
     }
 
     const job = {
@@ -88,7 +89,7 @@ router.patch('/:id', async (req, res) => {
 });
 
 
-router.delete('/:id', async (req, res) => {
+router.delete('/:id', checkToken, async (req, res) => {
     
     const id = req.params.id
 
