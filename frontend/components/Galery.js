@@ -12,9 +12,9 @@ export default function Galery(){
     const [obj, setObj] = useState(null);
 
     useEffect(() => {
-        fetch('177.71.174.240:3030/job')
-            .then((response) => response.json())
-            .then(setData)
+        fetch('http://177.71.174.240:3030/job')
+            .then((response) => console.log(response))
+            // .then(console.log())
     }, [])
 
     if(!data || !data.length) {

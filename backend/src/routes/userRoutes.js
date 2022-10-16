@@ -9,7 +9,7 @@ const checkToken = require('../middlewares/checkToken')
 
 router.post('/', async (req, res) => {
 
-    const { username, password } = req.body
+    const { username, password, created, updated } = req.body
 
     if(!username || !password){
         return res.status(422).json({message: 'Todos os campos são obrigatórios'})
@@ -29,7 +29,9 @@ router.post('/', async (req, res) => {
 
         const user = {
             username,
-            password: passwordHash
+            password: passwordHash,
+            created,
+            updated
         }
 
         await User.create(user)

@@ -43,7 +43,7 @@ export default function Header({reduce}) {
         <button onClick={() => {
           button ? setButton(false) : setButton(true)
         }}>
-          <i class="bi bi-list"></i>
+          <i className="bi bi-list"></i>
         </button>
       </nav>
     </header>
