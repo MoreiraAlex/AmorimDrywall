@@ -6,7 +6,8 @@ const checkToken = (req, res, next) => {
     const token = authHeader ? authHeader.split(' ')[1] : null
 
     if(!token){
-        return res.status(401).json({message: 'Acesso negado'})
+        console.log('Acesso negado!')
+        return res.status(401)
     }
 
     try {

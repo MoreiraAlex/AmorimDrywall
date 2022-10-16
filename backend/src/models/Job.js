@@ -1,8 +1,9 @@
 const mongoose = require('mongoose');
 
 const Job = mongoose.model('Job', {
-    name: String,
     desc: String,
+    img: String,
+    tags: [String],
     photos: [String] 
 });
 

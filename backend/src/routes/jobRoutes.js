@@ -7,15 +7,16 @@ const checkToken = require('../middlewares/checkToken')
 
 router.post('/', checkToken, async (req, res) => {
 
-    const { name, desc, photos } = req.body
+    const { desc, img, tags, photos } = req.body
 
-    if(!name || !desc || !photos){
+    if(!desc || !img || !tags.length || !photos.length){
         return res.status(422).json({message: 'Todos os campos são obrigatórios'})
     }
 
     const job = {
-        name,
         desc,
+        img,
+        tags,
         photos
     }
 
@@ -23,12 +24,13 @@ router.post('/', checkToken, async (req, res) => {
         await Job.create(job)
         res.status(201).json({message: 'Serviço cadastrado!'})
     } catch (error) {
-        res.status(500).json({erro: error})                
+        console.log(error)
+        res.status(500).json({message: 'Erro do lado do servidor!'})                      
     }
 });
 
 
-router.get('/', checkToken, async (req, res) => {
+router.get('/', async (req, res) => {
 
     try {
          
@@ -36,7 +38,8 @@ router.get('/', checkToken, async (req, res) => {
         res.status(200).json(jobs)
 
     } catch (error) {
-        res.status(500).json({erro: error})                
+        console.log(error)
+        res.status(500).json({message: 'Erro do lado do servidor!'})                      
     }
 });
 
@@ -55,7 +58,8 @@ router.get('/:id', checkToken, async (req, res) => {
         res.status(200).json(job)
 
     } catch (error) {
-        res.status(500).json({erro: error})                
+        console.log(error)
+        res.status(500).json({message: 'Erro do lado do servidor!'})                     
     }
 });
 
@@ -63,15 +67,16 @@ router.get('/:id', checkToken, async (req, res) => {
 router.patch('/:id', checkToken, async (req, res) => {
 
     const id = req.params.id
-    const { name, desc, photos } = req.body
+    const { desc, img, tags, photos } = req.body
 
-    if(!name && !desc && photos.length === 0){
+    if(!desc && !img && !tags.length && !photos.length){
         return res.status(422).json({message: 'Nenhuma atualização foi requisitada'})
     }
 
     const job = {
-        name,
         desc,
+        img,
+        tags,
         photos
     }
 
@@ -86,7 +91,8 @@ router.patch('/:id', checkToken, async (req, res) => {
         res.status(200).json(job)
 
     } catch (error) {
-        res.status(500).json({erro: error})                
+        console.log(error)
+        res.status(500).json({message: 'Erro do lado do servidor!'})                      
     }
 });
 
@@ -107,7 +113,8 @@ router.delete('/:id', checkToken, async (req, res) => {
         res.status(200).json({message: 'Serviço removido com sucesso'})
 
     } catch (error) {
-        res.status(500).json({erro: error})                
+        console.log(error)
+        res.status(500).json({message: 'Erro do lado do servidor!'})                   
     }
 });
 
