@@ -7,15 +7,16 @@ const checkToken = require('../middlewares/checkToken')
 
 router.post('/', checkToken, async (req, res) => {
 
-    const { name, desc } = req.body
+    const { name, desc, photos } = req.body
 
-    if(!name || !desc){
+    if(!name || !desc || !photos){
         return res.status(422).json({message: 'Todos os campos são obrigatórios'})
     }
 
     const job = {
         name,
-        desc
+        desc,
+        photos
     }
 
     try {
@@ -48,7 +49,7 @@ router.get('/:id', checkToken, async (req, res) => {
         const job = await Job.findOne({_id: id})
 
         if(!job) {
-            return res.status(422).json({message: 'Serviço não encontrado'})
+            return res.status(404).json({message: 'Serviço não encontrado'})
         }
 
         res.status(200).json(job)
@@ -62,15 +63,16 @@ router.get('/:id', checkToken, async (req, res) => {
 router.patch('/:id', checkToken, async (req, res) => {
 
     const id = req.params.id
-    const { name, desc } = req.body
+    const { name, desc, photos } = req.body
 
-    if(!name && !desc){
+    if(!name && !desc && photos.length === 0){
         return res.status(422).json({message: 'Nenhuma atualização foi requisitada'})
     }
 
     const job = {
         name,
-        desc
+        desc,
+        photos
     }
 
     try {
@@ -78,7 +80,7 @@ router.patch('/:id', checkToken, async (req, res) => {
         const updateJob = await Job.updateOne({_id: id}, job)
 
         if(updateJob.matchedCount === 0) {
-            return res.status(422).json({message: 'Serviço não encontrado'})
+            return res.status(404).json({message: 'Serviço não encontrado'})
         }
 
         res.status(200).json(job)
@@ -97,7 +99,7 @@ router.delete('/:id', checkToken, async (req, res) => {
         const job = await Job.findOne({_id: id})
 
         if(!job) {
-            return res.status(422).json({message: 'Serviço não encontrado'})
+            return res.status(404).json({message: 'Serviço não encontrado'})
         }
          
         await Job.deleteOne({_id: id})

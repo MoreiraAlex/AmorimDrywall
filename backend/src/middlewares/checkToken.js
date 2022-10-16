@@ -11,7 +11,7 @@ const checkToken = (req, res, next) => {
 
     try {
 
-        const secret = process.env.SECRET
+        const secret = process.env.AMORIM_DRYWALL_SECRET
 
         jwt.verify(token, secret)
 
