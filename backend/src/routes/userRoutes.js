@@ -166,7 +166,7 @@ router.post('/login', async (req, res) => {
             return res.status(422).json({message: 'Senha invalida!'})
         }
 
-        const secret = process.env.SECRET
+        const secret = process.env.AMORIM_DRYWALL_SECRET
         const token = jwt.sign({
             id: user._id
         }, secret)
