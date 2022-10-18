@@ -66,7 +66,7 @@ router.get('/', checkToken, async (req, res) => {
 });
 
 
-router.get('/:id', async (req, res) => {
+router.get('/:id', checkToken, async (req, res) => {
     
     const id = req.params.id
 
@@ -86,7 +86,7 @@ router.get('/:id', async (req, res) => {
 });
 
 
-router.patch('/:id', async (req, res) => {
+router.patch('/:id', checkToken, async (req, res) => {
 
     const id = req.params.id
     const { username, password } = req.body
@@ -120,7 +120,7 @@ router.patch('/:id', async (req, res) => {
 });
 
 
-router.delete('/:id', async (req, res) => {
+router.delete('/:id', checkToken, async (req, res) => {
     
     const id = req.params.id
 

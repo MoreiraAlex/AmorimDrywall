@@ -7,7 +7,7 @@ const checkToken = require('../middlewares/checkToken')
 
 router.post('/', checkToken, async (req, res) => {
 
-    const { desc, img, tags, photos, created, updated} = req.body
+    const { desc, img, tags, photos } = req.body
 
     if(!desc || !img || !tags.length || !photos.length){
         return res.status(422).json({message: 'Todos os campos são obrigatórios'})
@@ -17,9 +17,7 @@ router.post('/', checkToken, async (req, res) => {
         desc,
         img,
         tags,
-        photos,
-        created,
-        updated
+        photos
     }
 
     try {

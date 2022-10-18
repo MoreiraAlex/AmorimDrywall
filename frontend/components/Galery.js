@@ -13,8 +13,8 @@ export default function Galery(){
 
     useEffect(() => {
         fetch('http://177.71.174.240:3030/job')
-            .then((response) => console.log(response))
-            // .then(console.log())
+            .then((response) => response.json())
+            .then(setData)
     }, [])
 
     if(!data || !data.length) {

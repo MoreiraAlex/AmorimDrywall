@@ -6,11 +6,7 @@ const User = mongoose.model('User', {
     created: {
         type: Date,
         default: Date.now
-    },
-    updated: {
-        type: Date,
-        default: Date.now
-    }  
+    }
 });
 
 module.exports = User;
