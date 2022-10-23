@@ -8,7 +8,7 @@ module.exports = {
         s3: new aws.S3(),
         bucket: process.env.AWS_BUCKET,
         contentType: multerS3.AUTO_CONTENT_TYPE,
-        acls: 'public-read',
+        acl: 'public-read',
         key: (req, file, cb) => {
             crypto.randomBytes(16, (error, hash) => {
                 if(error){

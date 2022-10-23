@@ -13,7 +13,7 @@ export default function Head() {
 
   return (
     <NextHead>
-      <meta http-equiv="content-language" content="pt-br" />
+      <meta httpEquiv="content-language" content="pt-br" />
       <meta name="author" content="Alex Moreira" />
       <meta name="reply-to" content="alexmoreira.dev@gmail.com" />
 

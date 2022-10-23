@@ -23,22 +23,19 @@ export default function PhotoModal({modal, close, obj}){
         }
     }
 
-
-//    const photos = Data.filter((photo) => photo.idPai == photoId)
-
     return(
         <>
             {modal ? 
                 <div id='canClose' className={styles.container} onClick={closeModal}>
                     <div className={styles.modal}>
                         <div className={styles.button} >
-                            <button onClick={toLeft}><i class="bi bi-chevron-left"></i></button>
-                            <button onClick={toRight}><i class="bi bi-chevron-right"></i></button>
+                            <button onClick={toLeft}><i className="bi bi-chevron-left"></i></button>
+                            <button onClick={toRight}><i className="bi bi-chevron-right"></i></button>
                         </div>
                         <div className={styles.slider} ref={slider}>
                             {obj.photos.map(item =>
-                                <img key={item} src={item} className={styles.img} ref={itm} />
-                                )}
+                                <img key={item[0]} src={item[1]} className={styles.img} ref={itm} />
+                            )}
                         </div>
                     </div>
                 </div>

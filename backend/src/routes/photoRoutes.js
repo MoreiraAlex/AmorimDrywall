@@ -8,7 +8,7 @@ const multerConfig = require('../config/multer')
 const aws = require('aws-sdk')
 
 
-router.post('/', checkToken, multer(multerConfig).single('file'), async (req, res) => {
+router.post('/', multer(multerConfig).single('file'), async (req, res) => {
 
     const { originalname: name, size, key, location: url} = req.file
 
@@ -21,7 +21,7 @@ router.post('/', checkToken, multer(multerConfig).single('file'), async (req, re
 
     try {
         await Photo.create(photo)
-        res.status(201).json({message: 'Imagem cadastrada!'})
+        res.status(200).json(photo)
         
     } catch (error) {
         console.log(error)
@@ -43,7 +43,7 @@ router.get('/', async (req, res) => {
 });
 
 
-router.get('/:id', checkToken, async (req, res) => {
+router.get('/:id', async (req, res) => {
     
     const id = req.params.id
 
@@ -63,7 +63,7 @@ router.get('/:id', checkToken, async (req, res) => {
 });
 
 
-router.patch('/:id', checkToken, multer(multerConfig).single('file'), async (req, res) => {
+router.patch('/:id', multer(multerConfig).single('file'), async (req, res) => {
 
     const id = req.params.id
     const { originalname: name, size, key, location: url} = req.file
@@ -96,12 +96,12 @@ router.patch('/:id', checkToken, multer(multerConfig).single('file'), async (req
 });
 
 
-router.delete('/:id', checkToken, async (req, res) => {
+router.delete('/:key', async (req, res) => {
     
-    const id = req.params.id
+    const key = req.params.key
 
     try {
-        const photo = await Photo.findOne({_id: id})
+        const photo = await Photo.findOne({key: key})
 
         if(!photo) {
             return res.status(404).json({message: 'Imagem não encontrada'})
@@ -114,7 +114,7 @@ router.delete('/:id', checkToken, async (req, res) => {
             Key: photo.key
         }).promise()
          
-        await Photo.deleteOne({_id: id})
+        await Photo.deleteOne({key: key})
 
         res.status(200).json({message: 'Imagem removida com sucesso'})
 

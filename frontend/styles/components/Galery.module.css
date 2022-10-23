@@ -4,6 +4,7 @@
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: center;
+    /* position: relative; */
 }
 
 .card{
@@ -16,6 +17,8 @@
     padding: 25px 30px;
     gap: 10px;
     background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
     min-width: 230px;
 }
 
@@ -36,16 +39,6 @@
     gap: 10px;
 }
 
-.card div span{
-    position: relative;
-    z-index: 1;
-    font-size: 1rem;
-    text-transform: capitalize;
-    color: var(--color-light);
-    font-size: 1.3rem;
-    display: none;
-}
-
 .card p{
     position: relative;
     z-index: 1;
@@ -56,7 +49,7 @@
     display: none;
 }
 
-.card:hover div span, .card:hover p {
+.card:hover p {
     cursor: pointer;
     display: inline;
 }

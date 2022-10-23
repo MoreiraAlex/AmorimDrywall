@@ -3,7 +3,7 @@ import styles from '../styles/components/Galery.module.css'
 import { useState, useEffect } from 'react';
 
 import PhotoModal from './PhotoModal';
-import * as Data from '../public/data/Job.json'
+import api from '../services/api'
 
 export default function Galery(){    
 
@@ -12,9 +12,13 @@ export default function Galery(){
     const [obj, setObj] = useState(null);
 
     useEffect(() => {
-        fetch('http://177.71.174.240:3030/job')
-            .then((response) => response.json())
-            .then(setData)
+            api.get('job', data)
+            .then(response => {
+                setData(response.data)
+            })
+            .catch((error) => {
+                console.log(error)
+            })
     }, [])
 
     if(!data || !data.length) {
@@ -35,22 +39,17 @@ export default function Galery(){
         <>
             <div className={styles.galery}>
                 {data.map(item => 
-                <div key={item.v_id} className={styles.card} style={{backgroundImage: `url(${item.img})`}} 
-                    onClick={()=>{
-                        openModal()
-                        setObj(item)
-                    }}
-                >
-                    <div>
-                        {item.tags.map(tag =>
-                            <span key={tag}>{tag}</span>                    
-                        )}
+                    <div key={item.v_id} className={styles.card} style={{backgroundImage: `url(${item.img[1]})`}} 
+                        onClick={()=>{
+                            setObj(item)
+                            openModal()
+                        }}
+                    >
+                        <p>{item.desc}</p>
                     </div>
-                    <p>{item.desc}</p>
-                </div>
                 )}
-            </div>
             <PhotoModal modal = {modal} close = {closeModal} obj = {obj}/>
+            </div>
         </>
         
     )

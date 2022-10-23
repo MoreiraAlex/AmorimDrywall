@@ -13,12 +13,9 @@
 
 .modal {
     width: 80vw;
-    /* height: 100vh; */
     position: absolute;
     z-index: 5;
 }
-
-
 
 .slider {
     display: flex;

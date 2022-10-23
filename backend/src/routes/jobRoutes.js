@@ -5,18 +5,19 @@ const Job = require('../models/Job')
 const checkToken = require('../middlewares/checkToken')
 
 
-router.post('/', checkToken, async (req, res) => {
+router.post('/', async (req, res) => {
 
-    const { desc, img, tags, photos } = req.body
+    console.log(req.body)
+    const { name, desc, img, photos } = req.body
 
-    if(!desc || !img || !tags.length || !photos.length){
+    if(!name || !desc || !img.length || !photos.length){
         return res.status(422).json({message: 'Todos os campos são obrigatórios'})
     }
 
     const job = {
+        name,
         desc,
         img,
-        tags,
         photos
     }
 
@@ -44,7 +45,7 @@ router.get('/', async (req, res) => {
 });
 
 
-router.get('/:id', checkToken, async (req, res) => {
+router.get('/:id', async (req, res) => {
     
     const id = req.params.id
 
@@ -64,19 +65,19 @@ router.get('/:id', checkToken, async (req, res) => {
 });
 
 
-router.patch('/:id', checkToken, async (req, res) => {
+router.patch('/:id', async (req, res) => {
 
     const id = req.params.id
-    const { desc, img, tags, photos } = req.body
+    const { name, desc, img, photos } = req.body
 
-    if(!desc && !img && !tags.length && !photos.length){
+    if(!name && !desc && !img.length && !photos.length){
         return res.status(422).json({message: 'Nenhuma atualização foi requisitada'})
     }
 
     const job = {
+        name,
         desc,
         img,
-        tags,
         photos
     }
 
@@ -97,7 +98,7 @@ router.patch('/:id', checkToken, async (req, res) => {
 });
 
 
-router.delete('/:id', checkToken, async (req, res) => {
+router.delete('/:id', async (req, res) => {
     
     const id = req.params.id
 
