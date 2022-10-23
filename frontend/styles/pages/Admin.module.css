@@ -86,6 +86,7 @@
 .main > section > div:last-of-type {
     display: flex;
     flex-wrap: wrap;
+    justify-content: center;
     column-gap: 2rem;
     row-gap: 2rem;
 }
@@ -95,19 +96,13 @@
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-    padding: 10px;
+    padding: 15px;
     border-top-left-radius: 10px;
     border-top-right-radius: 10px;
     background-color: hsl(0, 0%, 100%, 40%);
 }
 
-.main > section > div:last-of-type > div > div > div{
-    display: flex;
-    flex-direction: row;
-    gap: 1rem;
-}
-
-.main > section > div:last-of-type > div > div > div > span > svg:hover{
+.main > section > div:last-of-type > div > div > span > svg:hover{
     cursor: pointer;
 }
 
@@ -155,6 +150,7 @@
 .modal {
     z-index: 5;
     width: 30vw;
+    min-width: 320px;
     background-color: var(--white);
     display: flex;
     flex-direction: column;
@@ -204,62 +200,13 @@
     gap: 1rem;
 }
 
-.photos {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 5px;
-    margin-bottom: 1rem;
-}
-
- .photos > div {
-    width: 75px;
-    height: 75px;
-    background-position: center;
-    background-size: cover;
-    background-repeat: no-repeat; 
-    text-align: end;
-    position: relative;
- }
-
- 
-.none::after{
-    position: absolute;
-    content: "oi";
-    width: 100%;
-    height: 100%;
-    left: 0;
-    top: 0;
-    background-color: black;
-    opacity: 70%;
-}
-
-.iconX{
-    background-color: lightcoral;
-    border-radius: 4px;
-}
-
-.iconR{
-    background-color: lightgreen;
-    border-radius: 4px;
-    position: relative;
-    z-index: 2;
-}
-
-.iconR::after{
-    position: absolute;
-    content: "oi";
-    width: 500%;
-    height: 500%;
-    left: 10px;
-    top: 0;
-    background-color: black;
-}
-
 .modal form div button{
     position: relative;
     z-index: 5;
     border-radius: 10px;
     padding: 10px;
+    /* width: 50%;
+    height: 50px; */
     border: none;
     font-size: 1rem;
     font-weight: bold;
@@ -287,4 +234,12 @@
 
 .modal form div button:active{
     box-shadow: 1px 1px 2px hsl(0, 0%, 0%, 10%);
+}
+
+
+@media (max-width: 500px){
+
+    .header > h1 {
+        display: none;
+    }
 }

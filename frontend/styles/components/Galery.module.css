@@ -13,7 +13,7 @@
     position: relative;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    justify-content: flex-end;
     padding: 25px 30px;
     gap: 10px;
     background-position: center;
@@ -31,12 +31,6 @@
     top: 0;
     background-color: var(--black);
     opacity: 50%;
-}
-
-.card div {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
 }
 
 .card p{
