@@ -6,6 +6,7 @@ import { useState, useEffect } from 'react';
 
 import api from '../services/api';
 import Logo from '../public/LogoReduce.png';
+import Loading from '../components/Loading';
 
 export default function Admin() {
 
@@ -16,6 +17,7 @@ export default function Admin() {
     const[photos, setPhotos] = useState([])
     const[length, setLength] = useState(-1)
     const[img, setImg] = useState([])
+    const [loading, setLoading] = useState(true)
 
 
     const closeModal = (e) => {
@@ -25,6 +27,8 @@ export default function Admin() {
     }
 
     function DeleteJob(id, img, urls){
+
+        setLoading(true)
 
         urls.map((url) => {            
             api.delete(`upload/${url[0]}`)
@@ -58,6 +62,8 @@ export default function Admin() {
 
     function DataForm(data){
         data.preventDefault();
+
+        setLoading(true)
         
         setFiles([])
         Object.values(data.target).map((value) => {
@@ -126,13 +132,13 @@ export default function Admin() {
             api.get('job', data)
             .then(response => {
                 setData(response.data)
+                setLoading(false)
             })
             .catch((error) => {
                 console.log(error)
             })
         }
     }, [refresh])
-
 
   return (    
     <>
@@ -159,19 +165,25 @@ export default function Admin() {
                     </button>
                 </div>
                 <div>
-                    {data.map((item) => (
-                        <div key={item._id}>
-                            <div>
-                                <h3>{item.name}</h3>
-                                <span onClick={() => {DeleteJob(item._id, item.img, item.photos)}}>
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-trash-fill" viewBox="0 0 16 16">
-                                        <path d="M2.5 1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1H3v9a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V4h.5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H10a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1H2.5zm3 4a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5zM8 5a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7A.5.5 0 0 1 8 5zm3 .5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 1 0z"/>
-                                    </svg>
-                                </span>
-                            </div>
-                            <Image  src={item.img[1]} width='290px' height='290px' alt='Trabalhos'/>
-                        </div>
-                    ))}
+                    {loading ?
+                        <Loading/>
+                    :
+                        <>
+                            {data.map((item) => (
+                                <div key={item._id}>
+                                    <div>
+                                        <h3>{item.name}</h3>
+                                        <span onClick={() => {DeleteJob(item._id, item.img, item.photos)}}>
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-trash-fill" viewBox="0 0 16 16">
+                                                <path d="M2.5 1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1H3v9a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V4h.5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H10a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1H2.5zm3 4a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5zM8 5a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7A.5.5 0 0 1 8 5zm3 .5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 1 0z"/>
+                                            </svg>
+                                        </span>
+                                    </div>
+                                    <Image  src={item.img[1]} width='290px' height='290px' alt='Trabalhos'/>
+                                </div>
+                            ))}
+                        </>
+                    }
                 </div>
             </section>    
         </main>

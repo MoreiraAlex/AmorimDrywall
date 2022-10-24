@@ -4,24 +4,32 @@ import { useState, useEffect } from 'react';
 
 import PhotoModal from './PhotoModal';
 import api from '../services/api'
+import Loading from './Loading';
 
 export default function Galery(){    
 
     const [modal, setModal] = useState(false);
     const [data, setData] = useState([]);
     const [obj, setObj] = useState(null);
+    const [loading, setLoading] = useState(true)
 
     useEffect(() => {
             api.get('job', data)
             .then(response => {
                 setData(response.data)
+                setLoading(false)
             })
             .catch((error) => {
                 console.log(error)
             })
     }, [])
 
-    if(!data || !data.length) {
+    if(loading){
+        return (
+            <Loading/>
+        )
+    }
+    else if((!data || !data.length) && !loading) {
         return (
             <h1 style={{marginBottom: '100px', marginTop: '50px'}}>Sem dados!</h1>
         )
