@@ -7,8 +7,6 @@ const userRoutes = require('./routes/userRoutes')
 const jobRoutes = require('./routes/jobRoutes')
 const photoRoutes = require('./routes/photoRoutes')
 
-const User = require('./db/models/User')
-
 const app = express();
 
 app.use(cors());
@@ -21,11 +19,6 @@ app.use('/job', jobRoutes)
 app.use('/upload', photoRoutes)
 
 app.listen(process.env.AMORIM_DRYWALL_PORT, () => console.log(`Rodando na porta ${process.env.AMORIM_DRYWALL_PORT}...`));
-
-
-app.post('/', async (req, res) => {
-    
-})
 
 
 
