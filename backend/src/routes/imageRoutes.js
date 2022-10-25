@@ -130,7 +130,7 @@ router.delete('/:key', async (req, res) => {
 });
 
 
-router.delete('/delete/all', checkToken, async (req, res) => {
+router.delete('/delete/all', async (req, res) => {
 
     try {
          
