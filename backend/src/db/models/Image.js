@@ -2,24 +2,32 @@ const sequelize = require('sequelize')
 
 const db = require('../connection')
 
-const User = db.define('users', {
+const Image = db.define('images', {
     id: {
         type: sequelize.INTEGER,
         autoIncrement: true,
         allowNull: false,
         primaryKey: true
     },
-    username: {
+    name: {
         type: sequelize.STRING,
         allowNull: false
     },
-    password: {
+    size: {
+        type:sequelize.INTEGER,
+        allowNull: false
+    },
+    key: {
+        type:sequelize.STRING,
+        allowNull: false
+    },
+    url: {
         type:sequelize.STRING,
         allowNull: false
     }
 })
 
-User.sync()
-// User.sync({ alter: true })
+Image.sync()
+// Image.sync({ alter: true })
 
-module.exports = User;
+module.exports = Image;

@@ -5,7 +5,7 @@ const morgan = require('morgan');
 
 const userRoutes = require('./routes/userRoutes')
 const jobRoutes = require('./routes/jobRoutes')
-const photoRoutes = require('./routes/photoRoutes')
+const imageRoutes = require('./routes/imageRoutes')
 
 const app = express();
 
@@ -16,7 +16,7 @@ app.use(express.json());
 
 app.use('/auth', userRoutes)
 app.use('/job', jobRoutes)
-app.use('/upload', photoRoutes)
+app.use('/upload', imageRoutes)
 
 app.listen(process.env.AMORIM_DRYWALL_PORT, () => console.log(`Rodando na porta ${process.env.AMORIM_DRYWALL_PORT}...`));
 

@@ -24,6 +24,6 @@ const Job = db.define('jobs', {
 })
 
 Job.sync()
-// User.sync({ alter: true })
+// Job.sync({ alter: true })
 
 module.exports = Job;

@@ -1,7 +1,7 @@
 const router = require('express').Router()
 const multer = require('multer')
 
-const Photo = require('../models/Photo')
+const Image = require('../db/models/Image')
 
 const checkToken = require('../middlewares/checkToken')
 const multerConfig = require('../config/multer')
@@ -12,16 +12,16 @@ router.post('/', multer(multerConfig).single('file'), async (req, res) => {
 
     const { originalname: name, size, key, location: url} = req.file
 
-    const photo = {
+    const image = {
         name,
         size,
         key, 
-        url
+        url 
     }
 
     try {
-        await Photo.create(photo)
-        res.status(200).json(photo)
+        await Image.create(image)
+        res.status(200).json(image)
         
     } catch (error) {
         console.log(error)
@@ -33,8 +33,13 @@ router.get('/', async (req, res) => {
 
     try {
          
-        const photos = await Photo.find()
-        res.status(200).json(photos)
+        const images = await Image.findAll()
+
+        if(images.length === 0){
+            return res.status(404).json({message: 'Nenhuma imagem cadastrada!'})
+        }
+
+        res.status(200).json(images)
 
     } catch (error) {
         console.log(error)
@@ -48,13 +53,13 @@ router.get('/:id', async (req, res) => {
     const id = req.params.id
 
     try {
-        const photo = await Photo.findOne({_id: id})
+        const image = await Image.findOne({ where: { id: id } })
 
-        if(!photo) {
+        if(!image) {
             return res.status(404).json({message: 'Imagem não encontrada'})
         }
 
-        res.status(200).json(photo)
+        res.status(200).json(image)
 
     } catch (error) {
         console.log(error)
@@ -72,7 +77,7 @@ router.patch('/:id', multer(multerConfig).single('file'), async (req, res) => {
         return res.status(422).json({message: 'Nenhuma atualização foi requisitada'})
     }
 
-    const photo = {
+    const image = {
         name,
         size,
         key, 
@@ -81,13 +86,13 @@ router.patch('/:id', multer(multerConfig).single('file'), async (req, res) => {
 
     try {
 
-        const updateUpdate = await Photo.updateOne({_id: id}, photo)
+        const updateUpdate = await Image.update(image, {where: { id: id } })
 
         if(updateUpdate.matchedCount === 0) {
             return res.status(404).json({message: 'Imagem não encontrada'})
         }
 
-        res.status(200).json(photo)
+        res.status(200).json(image)
 
     } catch (error) {
         console.log(error)
@@ -101,9 +106,9 @@ router.delete('/:key', async (req, res) => {
     const key = req.params.key
 
     try {
-        const photo = await Photo.findOne({key: key})
+        const image = await Image.findOne({ where: { key: key } })
 
-        if(!photo) {
+        if(!image) {
             return res.status(404).json({message: 'Imagem não encontrada'})
         }
 
@@ -111,16 +116,33 @@ router.delete('/:key', async (req, res) => {
 
         s3.deleteObject({
             Bucket: process.env.AWS_BUCKET,
-            Key: photo.key
+            Key: image.key
         }).promise()
          
-        await Photo.deleteOne({key: key})
+        await Image.destroy({ where: { key: key } })
 
         res.status(200).json({message: 'Imagem removida com sucesso'})
 
     } catch (error) {
         console.log(error)
         res.status(500).json({message: 'Erro do lado do servidor!'})                   
+    }
+});
+
+
+router.delete('/delete/all', checkToken, async (req, res) => {
+
+    try {
+         
+        await Image.destroy({
+            truncate: true
+        });
+
+        res.status(200).json({message: 'Tabela limpa!'})
+
+    } catch (error) {
+        console.log(error)
+        res.status(500).json({message: 'Erro do lado do servidor!'})                
     }
 });
 
