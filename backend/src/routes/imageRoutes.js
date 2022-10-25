@@ -12,11 +12,16 @@ router.post('/', multer(multerConfig).single('file'), async (req, res) => {
 
     const { originalname: name, size, key, location: url} = req.file
 
+    
     const image = {
         name,
         size,
         key, 
         url 
+    }
+
+    if(!image.url) {
+        image.url = `http://localhost:3030/files/${key}`
     }
 
     try {
@@ -82,6 +87,10 @@ router.patch('/:id', multer(multerConfig).single('file'), async (req, res) => {
         size,
         key, 
         url
+    }
+
+    if(!image.url) {
+        image.url = `http://localhost:3030/files/${key}`
     }
 
     try {

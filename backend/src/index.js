@@ -2,6 +2,7 @@ require('dotenv').config()
 const express = require('express');
 const cors = require('cors');
 const morgan = require('morgan');
+const path = require('path');
 
 const userRoutes = require('./routes/userRoutes')
 const jobRoutes = require('./routes/jobRoutes')
@@ -17,15 +18,6 @@ app.use(express.json());
 app.use('/auth', userRoutes)
 app.use('/job', jobRoutes)
 app.use('/upload', imageRoutes)
+app.use('/files', express.static(path.resolve(__dirname, '..', 'temp', 'upload')))
 
 app.listen(process.env.AMORIM_DRYWALL_PORT, () => console.log(`Rodando na porta ${process.env.AMORIM_DRYWALL_PORT}...`));
-
-
-
-// mongoose.connect(
-//     `mongodb+srv://${process.env.AMORIM_DRYWALL_DB_USER}:${process.env.AMORIM_DRYWALL_DB_PASS}@amorimdrywall.sacj0wh.mongodb.net/?retryWrites=true&w=majority`
-//     ).then(() => {
-//         console.log('Banco de dados conectado com sucesso!');
-//         app.listen(process.env.AMORIM_DRYWALL_PORT);
-//         console.log(`Rodando na porta ${process.env.AMORIM_DRYWALL_PORT}...`);
-//     }).catch((error) => console.log(error));
