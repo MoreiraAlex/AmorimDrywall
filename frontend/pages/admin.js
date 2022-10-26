@@ -6,18 +6,16 @@ import { useState, useEffect } from 'react';
 
 import api from '../services/api';
 import Logo from '../public/LogoReduce.png';
-import Loading from '../components/Loading';
+
+import { RotatingLines } from  'react-loader-spinner'
 
 export default function Admin() {
 
-    const[modal, setModal] = useState(false)
     const[data, setData] = useState([])
+    const[images, setImages] = useState([])
+    const[modal, setModal] = useState(false)
     const[refresh, setRefresh] = useState(false)
-    const[files, setFiles] = useState([])
-    const[photos, setPhotos] = useState([])
-    const[length, setLength] = useState(-1)
-    const[img, setImg] = useState([])
-    const [loading, setLoading] = useState(true)
+    const[loading, setLoading] = useState(true)
 
 
     const closeModal = (e) => {
@@ -26,117 +24,98 @@ export default function Admin() {
         }
     }
 
-    function DeleteJob(id, img, urls){
+    function DataForm(data){
+        data.preventDefault();
 
         setLoading(true)
+        setModal(false)
 
-        urls.map((url) => {            
-            api.delete(`upload/${url[0]}`)
-            .then(response => {
-                console.log(response.data)
+        const form = {
+            name:  data.target[0].value,
+            desc:  data.target[1].value
+        }
+
+        api.post('job', form)
+        .then(response => {
+
+            const formData = new FormData();
+
+            formData.set('file', data.target[2].files[0])
+            formData.append('jobId', response.data.id)
+            formData.append('isMain', 'true')
+            
+            api.post('upload', formData)
+            .then(() => {
+
+                Object.values(data.target[3].files).map(element => {
+
+                    formData.set('file', element)
+                    formData.append('jobId', response.data.id)
+                    formData.append('isMain', 'false')
+        
+                    api.post('upload', formData)
+                    .then(() => {
+                        refresh ? setRefresh(false) : setRefresh(true)
+                    })
+                    .catch((error) => {
+                        console.log(`Image error: ${error}`)
+                    })
+                })                
             })
             .catch((error) => {
-                console.log(error)
-            })
-        })
-
-          
-        api.delete(`upload/${img[0]}`)
-        .then(response => {
-            console.log(response.data)
+                console.log(`Main Image error: ${error}`)
+            }) 
         })
         .catch((error) => {
-            console.log(error)
+            console.log(`Job error: ${error}`)
         })
+    }
 
+    function DeleteJob(id){
+
+        setLoading(true)
 
         api.delete(`job/${id}`)
         .then(response => {
             console.log(response.data)
+            setData([])
+            setImages([])
             refresh ? setRefresh(false) : setRefresh(true)
         })
         .catch((error) => {
             console.log(error)
         })
-    }
 
-    function DataForm(data){
-        data.preventDefault();
-
-        setLoading(true)
-        
-        setFiles([])
-        Object.values(data.target).map((value) => {
-            setFiles(oldArray => [...oldArray, value.value])
-        })
-
-        const formData = new FormData();
-
-        formData.set('file', data.target[2].files[0])
-
-        api.post('upload', formData)
-        .then(response => {
-            setImg([response.data.key, response.data.url])
-        })
-        .catch((error) => {
-            console.log(error)
-        }) 
-        
-
-        setLength(data.target[3].files.length)
-
-        setPhotos([])
-
-        Object.values(data.target[3].files).map(element => {
-
-            formData.set('file', element)
-
-            api.post('upload', formData)
-            .then(response => {
-                setPhotos(oldArray => [...oldArray, [response.data.key, response.data.url]])
-            })
-            .catch((error) => {
-                console.log(error)
-            })
-        })
-
-        setModal(false)
-    }
-
-    useEffect(() => {
-        if(length == photos.length && img.length != 0){
-            const form = {
-                name: files[0],
-                desc: files[1],
-                img: img,
-                photos: photos
-            }
-
-            api.post('job', form)
+        images.filter(image => image.jobId == id).map(image => {
+            api.delete(`upload/${image.id}`)
             .then(response => {
                 console.log(response.data)
-                setLength(-1)
-                setImg([])
-                refresh ? setRefresh(false) : setRefresh(true)
             })
             .catch((error) => {
                 console.log(error)
             })
-        }
-    }, [photos, img])
-
-
+        })
+    }
 
     useEffect(() => {
         return () => {
-            api.get('job', data)
+            api.get('job')
             .then(response => {
                 setData(response.data)
-                setLoading(false)
+
+                api.get('upload')
+                .then(response => {
+                    setImages(response.data)
+                    setLoading(false)
+                })
+                .catch((error) => {
+                    console.log(error)
+                })
             })
             .catch((error) => {
+                setLoading(false)
                 console.log(error)
-            })
+            })            
         }
     }, [refresh])
 
@@ -144,7 +123,7 @@ export default function Admin() {
     <>
         <header className={styles.header}>
             <Image src={Logo} alt='Logo' width='70px' height='55px'/>
-            <h1>Painel</h1>
+            <h1>Administração</h1>
             <div>
                 <Link href='/'>
                     <a>
@@ -159,30 +138,33 @@ export default function Admin() {
         <main className={styles.main}>
             <section>
                 <div>
-                    <h2>Jobs</h2>
+                    <h2>Serviços</h2>
                     <button onClick={() => setModal(true)}>
                         Adicionar
                     </button>
                 </div>
                 <div>
                     {loading ?
-                        <Loading/>
+                        <RotatingLines strokeColor="grey" strokeWidth="2" animationDuration="1" width="100" visible={true}/>
                     :
-                        <>
-                            {data.map((item) => (
-                                <div key={item._id}>
-                                    <div>
-                                        <h3>{item.name}</h3>
-                                        <span onClick={() => {DeleteJob(item._id, item.img, item.photos)}}>
-                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-trash-fill" viewBox="0 0 16 16">
-                                                <path d="M2.5 1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1H3v9a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V4h.5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H10a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1H2.5zm3 4a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5zM8 5a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7A.5.5 0 0 1 8 5zm3 .5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 1 0z"/>
-                                            </svg>
-                                        </span>
+                        data.length ? 
+                            <>
+                                {data.map((item) => (
+                                    <div key={item.id}>
+                                        <div>
+                                            <h3>{item.name}</h3>
+                                            <span onClick={() => {DeleteJob(item.id)}}>
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-trash-fill" viewBox="0 0 16 16">
+                                                    <path d="M2.5 1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1H3v9a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V4h.5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H10a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1H2.5zm3 4a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5zM8 5a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7A.5.5 0 0 1 8 5zm3 .5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 1 0z"/>
+                                                </svg>
+                                            </span>
+                                        </div>
+                                        <Image src={`${images.filter(image => image.jobId == item.id && image.isMain == true).map(image => image.url)}`} width='290px' height='290px' alt='Trabalhos'/>
                                     </div>
-                                    <Image  src={item.img[1]} width='290px' height='290px' alt='Trabalhos'/>
-                                </div>
-                            ))}
-                        </>
+                                ))}
+                            </>
+                        : 
+                            <h3>Nenhum serviço cadastrado!</h3>
                     }
                 </div>
             </section>    
@@ -198,18 +180,18 @@ export default function Admin() {
                     <h3>Novo Serviço</h3>
                     <form encType="multipart/form-data" onSubmit={DataForm}>
                         <label>
-                            <input type='text' placeholder='Nome' required></input>
+                            <input type='text' placeholder='Nome' ></input>
                         </label>
                         <label>
-                            <input type='text' placeholder='Descrição' required></input>
+                            <input type='text' placeholder='Descrição' ></input>
                         </label>
                         <label>
                             Imagens de capa:
-                            <input type='file' name='file' required></input>
+                            <input type='file' name='file' ></input>
                         </label>
                         <label>
                             Imagens do serviço:
-                            <input type='file' name='file[]' multiple required></input>
+                            <input type='file' name='file[]' multiple ></input>
                         </label>
                         <div>
                             <button>Cadastrar</button>

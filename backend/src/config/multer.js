@@ -3,7 +3,9 @@ const crypto = require('crypto');
 const multerS3 = require('multer-s3');
 const aws = require('aws-sdk')
 const path = require('path')
+const fs = require('fs')
 
+fs.mkdirSync(path.resolve(__dirname, '..', '..', 'temp', 'upload'), { recursive: true });
 
 const storageTypes = {
     local: multer.diskStorage({

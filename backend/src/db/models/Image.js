@@ -9,6 +9,14 @@ const Image = db.define('images', {
         allowNull: false,
         primaryKey: true
     },
+    jobId: {
+        type: sequelize.INTEGER,
+        allowNull: false,
+    },
+    isMain: {
+        type: sequelize.BOOLEAN,
+        allowNull: false,
+    },
     name: {
         type: sequelize.STRING,
         allowNull: false
@@ -27,7 +35,7 @@ const Image = db.define('images', {
     }
 })
 
-Image.sync()
+// Image.sync()
 // Image.sync({ alter: true })
 
 module.exports = Image;

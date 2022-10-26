@@ -8,21 +8,21 @@ const checkToken = require('../middlewares/checkToken')
 router.post('/', async (req, res) => {
 
     console.log(req.body)
-    const { name, desc, img } = req.body
+    const { name, desc } = req.body
 
-    if(!name || !desc || !img){
+    if(!name || !desc){
         return res.status(422).json({message: 'Todos os campos são obrigatórios'})
     }
 
     const job = {
         name,
-        desc,
-        img
+        desc
     }
 
     try {
-        await Job.create(job)
-        res.status(201).json({message: 'Serviço cadastrado!'})
+        const newJob = await Job.create(job)
+
+        res.status(201).json(newJob)
     } catch (error) {
         console.log(error)
         res.status(500).json({message: 'Erro do lado do servidor!'})                      
@@ -33,8 +33,13 @@ router.post('/', async (req, res) => {
 router.get('/', async (req, res) => {
 
     try {
-         
+
         const jobs = await Job.findAll()
+
+        if(jobs.length === 0){
+            return res.status(404).json({message: 'Nenhum serviço cadastrado!'})
+        }
+
         res.status(200).json(jobs)
 
     } catch (error) {
@@ -67,16 +72,15 @@ router.get('/:id', async (req, res) => {
 router.patch('/:id', async (req, res) => {
 
     const id = req.params.id
-    const { name, desc, img } = req.body
+    const { name, desc } = req.body
 
-    if(!name && !desc && !img){
+    if(!name && !desc){
         return res.status(422).json({message: 'Nenhuma atualização foi requisitada'})
     }
 
     const job = {
         name,
-        desc,
-        img
+        desc
     }
 
     try {

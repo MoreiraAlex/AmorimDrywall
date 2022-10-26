@@ -33,8 +33,8 @@ export default function PhotoModal({modal, close, obj}){
                             <button onClick={toRight}><i className="bi bi-chevron-right"></i></button>
                         </div>
                         <div className={styles.slider} ref={slider}>
-                            {obj.photos.map(item =>
-                                <img key={item[0]} src={item[1]} className={styles.img} ref={itm} />
+                            {obj.map(item =>
+                                <img key={item.id} src={item.url} className={styles.img} ref={itm} />
                             )}
                         </div>
                     </div>

@@ -16,14 +16,10 @@ const Job = db.define('jobs', {
     desc: {
         type: sequelize.STRING,
         allowNull: false
-    },
-    img: {
-        type:sequelize.STRING,
-        allowNull: false
     }
 })
 
-Job.sync()
+// Job.sync()
 // Job.sync({ alter: true })
 
 module.exports = Job;

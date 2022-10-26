@@ -1,26 +1,31 @@
 const router = require('express').Router()
 const multer = require('multer')
+const aws = require('aws-sdk')
+const fs = require('fs')
+const path = require('path')
 
 const Image = require('../db/models/Image')
-
 const checkToken = require('../middlewares/checkToken')
 const multerConfig = require('../config/multer')
-const aws = require('aws-sdk')
+
 
 
 router.post('/', multer(multerConfig).single('file'), async (req, res) => {
 
     const { originalname: name, size, key, location: url} = req.file
 
+    const { jobId, isMain } = req.body 
     
     const image = {
+        jobId,
+        isMain,
         name,
         size,
         key, 
         url 
     }
 
-    if(!image.url) {
+    if(process.env.STORAGE === 'local') {
         image.url = `http://localhost:3030/files/${key}`
     }
 
@@ -110,25 +115,29 @@ router.patch('/:id', multer(multerConfig).single('file'), async (req, res) => {
 });
 
 
-router.delete('/:key', async (req, res) => {
+router.delete('/:id', async (req, res) => {
     
-    const key = req.params.key
+    const id = req.params.id
 
     try {
-        const image = await Image.findOne({ where: { key: key } })
+        const image = await Image.findOne({ where: { id: id } })
 
         if(!image) {
             return res.status(404).json({message: 'Imagem não encontrada'})
         }
 
-        const s3 = new aws.S3();
+        if(process.env.STORAGE === 's3'){
+            const s3 = new aws.S3();
 
-        s3.deleteObject({
-            Bucket: process.env.AWS_BUCKET,
-            Key: image.key
-        }).promise()
+            s3.deleteObject({
+                Bucket: process.env.AWS_BUCKET,
+                Key: image.key
+            }).promise()
+        } else {
+            fs.unlinkSync(path.resolve(__dirname, '..', '..', 'temp', 'upload', image.key))
+        }
          
-        await Image.destroy({ where: { key: key } })
+        await Image.destroy({ where: { id: id } })
 
         res.status(200).json({message: 'Imagem removida com sucesso'})
 
