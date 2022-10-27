@@ -3,11 +3,13 @@ import styles from '../styles/pages/Admin.module.css'
 import Link from "next/link";
 import Image from "next/image";
 import { useState, useEffect } from 'react';
+import { parseCookies } from 'nookies'
 
 import api from '../services/api';
 import Logo from '../public/LogoReduce.png';
 
 import { RotatingLines } from  'react-loader-spinner'
+
 
 export default function Admin() {
 
@@ -15,7 +17,7 @@ export default function Admin() {
     const[images, setImages] = useState([])
     const[modal, setModal] = useState(false)
     const[refresh, setRefresh] = useState(false)
-    const[loading, setLoading] = useState(true)
+    const[loading, setLoading] = useState(true) 
 
 
     const closeModal = (e) => {
@@ -204,3 +206,20 @@ export default function Admin() {
     </>
   )
 }
+
+export const getServerSideProps = async (ctx) => {
+    const { ['amorimdrywall-token']: token } = parseCookies(ctx)
+
+    if(!token){
+        return {
+            redirect: {
+                destination: '/auth',
+                permanent: false
+            }
+        }
+    }
+    
+    return {
+        props: {}
+    }
+} 

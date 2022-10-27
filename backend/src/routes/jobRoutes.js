@@ -5,7 +5,7 @@ const Job = require('../db/models/Job')
 const checkToken = require('../middlewares/checkToken')
 
 
-router.post('/', async (req, res) => {
+router.post('/', checkToken, async (req, res) => {
 
     console.log(req.body)
     const { name, desc } = req.body
@@ -69,7 +69,7 @@ router.get('/:id', async (req, res) => {
 });
 
 
-router.patch('/:id', async (req, res) => {
+router.patch('/:id', checkToken, async (req, res) => {
 
     const id = req.params.id
     const { name, desc } = req.body
@@ -100,7 +100,7 @@ router.patch('/:id', async (req, res) => {
 });
 
 
-router.delete('/:id', async (req, res) => {
+router.delete('/:id', checkToken, async (req, res) => {
     
     const id = req.params.id
 
@@ -122,7 +122,7 @@ router.delete('/:id', async (req, res) => {
 });
 
 
-router.delete('/delete/all', async (req, res) => {
+router.delete('/delete/all', checkToken, async (req, res) => {
 
     try {
          

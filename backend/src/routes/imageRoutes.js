@@ -10,7 +10,7 @@ const multerConfig = require('../config/multer')
 
 
 
-router.post('/', multer(multerConfig).single('file'), async (req, res) => {
+router.post('/', checkToken, multer(multerConfig).single('file'), async (req, res) => {
 
     const { originalname: name, size, key, location: url} = req.file
 
@@ -78,7 +78,7 @@ router.get('/:id', async (req, res) => {
 });
 
 
-router.patch('/:id', multer(multerConfig).single('file'), async (req, res) => {
+router.patch('/:id', checkToken, multer(multerConfig).single('file'), async (req, res) => {
 
     const id = req.params.id
     const { originalname: name, size, key, location: url} = req.file
@@ -115,7 +115,7 @@ router.patch('/:id', multer(multerConfig).single('file'), async (req, res) => {
 });
 
 
-router.delete('/:id', async (req, res) => {
+router.delete('/:id', checkToken, async (req, res) => {
     
     const id = req.params.id
 
@@ -148,7 +148,7 @@ router.delete('/:id', async (req, res) => {
 });
 
 
-router.delete('/delete/all', async (req, res) => {
+router.delete('/delete/all', checkToken, async (req, res) => {
 
     try {
          
