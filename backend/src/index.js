@@ -24,3 +24,7 @@ if(process.env.STORAGE == 'local'){
 }
 
 app.listen(process.env.PORT, () => console.log(`Rodando na porta ${process.env.PORT}...`));
+
+app.get('/', async (req, res) => {
+    return res.status(200).json({message: 'OK'})
+});
