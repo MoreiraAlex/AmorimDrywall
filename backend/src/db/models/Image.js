@@ -35,7 +35,7 @@ const Image = db.define('images', {
     }
 })
 
-// Image.sync()
-// Image.sync({ alter: true })
+Image.sync()
+Image.sync({ alter: true })
 
 module.exports = Image;

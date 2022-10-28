@@ -18,6 +18,9 @@ app.use(express.json());
 app.use('/auth', userRoutes)
 app.use('/job', jobRoutes)
 app.use('/upload', imageRoutes)
-app.use('/files', express.static(path.resolve(__dirname, '..', 'temp', 'upload')))
 
-app.listen(process.env.AMORIM_DRYWALL_PORT, () => console.log(`Rodando na porta ${process.env.AMORIM_DRYWALL_PORT}...`));
+if(process.env.STORAGE == 'local'){
+    app.use('/files', express.static(path.resolve(__dirname, '..', 'temp', 'upload')))
+}
+
+app.listen(process.env.PORT, () => console.log(`Rodando na porta ${process.env.PORT}...`));

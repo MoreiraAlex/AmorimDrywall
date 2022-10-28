@@ -5,7 +5,9 @@ const aws = require('aws-sdk')
 const path = require('path')
 const fs = require('fs')
 
-fs.mkdirSync(path.resolve(__dirname, '..', '..', 'temp', 'upload'), { recursive: true });
+if(process.env.STORAGE == 'local'){
+    fs.mkdirSync(path.resolve(__dirname, '..', '..', 'temp', 'upload'), { recursive: true });
+}
 
 const storageTypes = {
     local: multer.diskStorage({
