@@ -9,6 +9,7 @@ import api from '../services/api';
 import Logo from '../public/LogoReduce.png';
 
 import { RotatingLines } from  'react-loader-spinner'
+import Message from '../components/Message';
 
 
 export default function Admin() {
@@ -18,6 +19,10 @@ export default function Admin() {
     const[modal, setModal] = useState(false)
     const[refresh, setRefresh] = useState(false)
     const[loading, setLoading] = useState(true) 
+    const[message, setMessage] = useState('')
+    const[type, setType] = useState('')
+    const[visible, setVisible] = useState(false)
+    const[time, setTime] = useState(null)
 
 
     const closeModal = (e) => {
@@ -40,6 +45,14 @@ export default function Admin() {
         api.post('job', form)
         .then(response => {
 
+            setMessage(`Serviço #${response.data.id} cadastrado com sucesso`)
+            setVisible(true)
+            setType('success')
+
+            setTime(setTimeout(() => {
+                setVisible(false)
+            }, 5000))
+
             const formData = new FormData();
 
             formData.set('file', data.target[2].files[0])
@@ -60,17 +73,28 @@ export default function Admin() {
                         refresh ? setRefresh(false) : setRefresh(true)
                     })
                     .catch((error) => {
+                        setLoading(false)
                         console.log(`Image error: ${error}`)
                     })
                 })                
             })
             .catch((error) => {
+                setLoading(false)
                 console.log(`Main Image error: ${error}`)
             }) 
         })
-        .catch((error) => {
-            console.log(`Job error: ${error}`)
+        .catch(() => {
+            setLoading(false)
+            setMessage('Erro do lado do servidor')
+            setVisible(true)
+            setType('error')
+
+            setTime(setTimeout(() => {
+                setVisible(false)
+            }, 3000))
         })
+
+        return () => clearTimeout(time) 
     }
 
     function DeleteJob(id){
@@ -78,25 +102,42 @@ export default function Admin() {
         setLoading(true)
 
         api.delete(`job/${id}`)
-        .then(response => {
-            console.log(response.data)
+        .then(() => {
             setData([])
             setImages([])
             refresh ? setRefresh(false) : setRefresh(true)
+
+            setMessage(`Serviço #${id} deletado com sucesso`)
+            setVisible(true)
+            setType('success')
+
+            setTime(setTimeout(() => {
+                setVisible(false)
+            }, 3000))
+
         })
-        .catch((error) => {
-            console.log(error)
+        .catch(() => {
+            setLoading(false)
+            setMessage('Erro do lado do servidor')
+            setVisible(true)
+            setType('error')
+
+            setTime(setTimeout(() => {
+                setVisible(false)
+            }, 3000))
         })
 
         images.filter(image => image.jobId == id).map(image => {
             api.delete(`upload/${image.id}`)
-            .then(response => {
-                console.log(response.data)
-            })
+            .then()
             .catch((error) => {
+                setLoading(false)
                 console.log(error)
             })
         })
+
+        return () => clearTimeout(time) 
+
     }
 
     useEffect(() => {
@@ -149,24 +190,28 @@ export default function Admin() {
                     {loading ?
                         <RotatingLines strokeColor="grey" strokeWidth="2" animationDuration="1" width="100" visible={true}/>
                     :
-                        data.length ? 
-                            <>
-                                {data.map((item) => (
-                                    <div key={item.id}>
-                                        <div>
-                                            <h3>{item.name}</h3>
-                                            <span onClick={() => {DeleteJob(item.id)}}>
-                                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-trash-fill" viewBox="0 0 16 16">
-                                                    <path d="M2.5 1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1H3v9a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V4h.5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H10a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1H2.5zm3 4a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5zM8 5a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7A.5.5 0 0 1 8 5zm3 .5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 1 0z"/>
-                                                </svg>
-                                            </span>
+                        <>
+                            <Message type={type} visible={visible}>{message}</Message>
+                            {data.length ? 
+                                <>
+                                    {data.map((item) => (
+                                        <div key={item.id}>
+                                            <div>
+                                                <h3>{item.name}</h3>
+                                                <span onClick={() => {DeleteJob(item.id)}}>
+                                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-trash-fill" viewBox="0 0 16 16">
+                                                        <path d="M2.5 1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1H3v9a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V4h.5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H10a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1H2.5zm3 4a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5zM8 5a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7A.5.5 0 0 1 8 5zm3 .5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 1 0z"/>
+                                                    </svg>
+                                                </span>
+                                            </div>
+                                            <Image src={`${images.filter(image => image.jobId == item.id && image.isMain == true).map(image => image.url)}`} width='290px' height='290px' alt='Trabalhos'/>
                                         </div>
-                                        <Image src={`${images.filter(image => image.jobId == item.id && image.isMain == true).map(image => image.url)}`} width='290px' height='290px' alt='Trabalhos'/>
-                                    </div>
-                                ))}
-                            </>
-                        : 
-                            <h3>Nenhum serviço cadastrado!</h3>
+                                    ))}
+                                </>
+                            : 
+                                <Message type='warning' visible='true'>Nenhum serviço cadastrado!</Message>
+                            }
+                        </>
                     }
                 </div>
             </section>    
@@ -182,18 +227,18 @@ export default function Admin() {
                     <h3>Novo Serviço</h3>
                     <form encType="multipart/form-data" onSubmit={DataForm}>
                         <label>
-                            <input type='text' placeholder='Nome' ></input>
+                            <input type='text' placeholder='Nome' required></input>
                         </label>
                         <label>
-                            <input type='text' placeholder='Descrição' ></input>
+                            <input type='text' placeholder='Descrição' required></input>
                         </label>
                         <label>
                             Imagens de capa:
-                            <input type='file' name='file' ></input>
+                            <input type='file' name='file' required></input>
                         </label>
                         <label>
                             Imagens do serviço:
-                            <input type='file' name='file[]' multiple ></input>
+                            <input type='file' name='file[]' multiple required></input>
                         </label>
                         <div>
                             <button>Cadastrar</button>

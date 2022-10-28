@@ -183,7 +183,9 @@ router.post('/login', async (req, res) => {
         const secret = process.env.AMORIM_DRYWALL_SECRET
         const token = jwt.sign({
             id: user._id
-        }, secret)
+        }, secret, {
+            expiresIn: '60m'
+        })
 
         res.status(200).json({message: 'Autenticação realizada com sucesso!', token})
 

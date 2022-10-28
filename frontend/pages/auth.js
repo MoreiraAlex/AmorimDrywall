@@ -1,18 +1,20 @@
 import styles from '../styles/pages/Auth.module.css'
 
 import { useState } from 'react'
-import { setCookie } from 'nookies'
+import { setCookie, parseCookies } from 'nookies'
+import { useRouter } from 'next/router'
+import { RotatingLines } from  'react-loader-spinner'
 
 import api from '../services/api'
-import { useRouter } from 'next/router'
-import { parseCookies } from 'nookies'
+import Message from '../components/Message'
 
-import { RotatingLines } from  'react-loader-spinner'
 
 
 export default function Auth() {
 
     const[loading, setLoading] = useState(false)
+    const[message, setMessage] = useState('')
+    const[visible, setVisible] = useState(false)
     const router = useRouter()
     
 
@@ -38,7 +40,7 @@ export default function Auth() {
             const { token } = response.data
             
             setCookie(undefined, 'amorimdrywall-token', token, {
-                maxAge: 60 * 1 * 1 //1 Hora
+                maxAge: 60 * 60 * 1 //1 Hora
             })
 
             api.defaults.headers['Authorization'] = `Bearer ${token}`
@@ -47,7 +49,25 @@ export default function Auth() {
         })
         .catch((error) => {
             setLoading(false)
-            console.log(error)
+            if(error.response.status){
+                setMessage('Senha ou usuário inválido')
+                setVisible(true)
+
+                const time = setTimeout(() => {
+                    setVisible(false)
+                }, 3000)
+
+                return () => clearTimeout(time) 
+            } else {
+                setMessage('Erro do lado do servidor')
+                setVisible(true)
+
+                const time = setTimeout(() => {
+                    setVisible(false)
+                }, 3000)
+
+                return () => clearTimeout(time) 
+            }
         })
         
     }
@@ -56,6 +76,7 @@ export default function Auth() {
     return (
         <div className={styles.container}>
             <div className={styles.content}>
+                <Message type='error' visible={visible}>{message}</Message>
                 <form onSubmit={SingIn}>
                     <label>
                         <input type='text' placeholder='Usuario' required></input>

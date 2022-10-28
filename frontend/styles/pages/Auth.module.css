@@ -10,9 +10,9 @@
 }
 
 .content {
-    height: 35vh;
     width: 25vw;
     min-width: 280px;
+    padding: 25px 0;
     border: 1px solid hsl(0, 0%, 75%, 75%);
     border-radius: 5px;
     display: flex;
