@@ -5,7 +5,7 @@ import { parseCookies } from 'nookies'
 const { 'amorimdrywall-token': token } = parseCookies()
 
 const api = axios.create({
-    baseURL: 'http://localhost:3030'
+    baseURL: process.env.NEXT_PUBLIC_URL
 })
 
 // api.interceptors.request.use(config => {
