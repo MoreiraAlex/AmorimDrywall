@@ -1,3 +1,30 @@
+.nav {
+    background-color: var(--white);
+    border-bottom: 1px solid hsl(0, 0%, 96%);
+    box-shadow: 0 1px 4px hsl(0, 0%, 80%);
+    height: 4rem;
+    transition: height 200ms 100ms ease-in-out;
+    color: var(--black);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 150px;
+}
+
+.nav > ul{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 1rem;
+    margin: 0;
+    padding: 0;
+}
+
+.nav > ul > li{
+    list-style: none;
+}
+
+
 .policy {
     padding: 100px;
     padding-bottom: 0px;

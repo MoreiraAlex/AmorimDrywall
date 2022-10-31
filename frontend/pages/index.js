@@ -2,6 +2,7 @@ import Header from '../layout/Header'
 import Main from '../layout/Main'
 import Footer from '../layout/Footer'
 
+
 import { useEffect, useState } from 'react'
 
 export default function Index() {

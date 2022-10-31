@@ -1,6 +1,5 @@
 import styles from '../styles/components/PhotoModal.module.css'
 
-// import * as Data from '../public/data/Photos.json'
 import { useRef } from 'react'
 
 
@@ -34,7 +33,7 @@ export default function PhotoModal({modal, close, obj}){
                         </div>
                         <div className={styles.slider} ref={slider}>
                             {obj.map(item =>
-                                <img key={item.id} src={item.url} className={styles.img} ref={itm} />
+                                <img key={item.id} src={item.url} alt='Imagens do serviço' className={styles.img} ref={itm} />
                             )}
                         </div>
                     </div>

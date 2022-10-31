@@ -1,12 +1,33 @@
 import styles from '../styles/pages/Policy.module.css'
 
-import Header from '../layout/Header'
 import Footer from '../layout/Footer'
+
+import Icon from '../components/Icon'
+import Logo from '../components/Logo'
+import Link from 'next/link'
 
 export default function Policy() {
   return (    
     <>
-        <Header reduce={true}/>
+        <header>
+            <nav className={styles.nav}>
+                <Link href='/'>
+                    <a><Logo reduce={true}/></a>
+                </Link>
+                <ul>
+                    <li>
+                        <a href='https://www.instagram.com/amorim_drywall/?hl=pt-br' target="_blank">
+                            <Icon size='1.5rem' reduce={true}>&#xF437;</Icon>
+                        </a>
+                    </li>
+                    <li>
+                        <a href='https://wa.me/5513988393565' target="_blank">
+                            <Icon size='1.5rem' reduce={true}>&#xF618;</Icon>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </header>
 
         <section className={styles.policy}>
             <div>
