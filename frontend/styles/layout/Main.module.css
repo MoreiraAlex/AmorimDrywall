@@ -8,7 +8,7 @@
     background-attachment: fixed;
     background-size: cover;
     background-repeat: no-repeat;
-    background-position: center;
+    background-position: top;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -58,10 +58,10 @@
 }
 
 .about > div:first-of-type{
-    background-image: url(../../public/about.webp);
+    background-image: url(../../public/about.jpg);
     width: 40%;  
     background-size: cover; 
-    background-position: 40%;
+    background-position: 85%;
 }
 
 .about > div:last-of-type{
@@ -218,15 +218,16 @@
 }
 
 .ilha {
-    background-image: url('../../public/Ilha.jpg');
+    background-image: url('../../public/ilha.jpg');
 }
 
 .sanca {
-    background-image: url('../../public/Sanca.png');
+    background-image: url('../../public/sanca.jpg');
 }
 
 .cortineiro {
-    background-image: url('../../public/Cortineiro.jpg');
+    background-image: url('../../public/cortineiro.jpg');
+    background-position: left!important;
 }
 
 .forro {
@@ -234,11 +235,11 @@
 }
 
 .divisorias {
-    background-image: url('../../public/Divisórias.webp');
+    background-image: url('../../public/divisoria.jpg');
 }
 
 .reparos {
-    background-image: url('../../public/Reparos.jpg');
+    background-image: url('../../public/reparos.jpg');
 }
 
 
