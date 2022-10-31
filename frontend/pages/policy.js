@@ -16,12 +16,12 @@ export default function Policy() {
                 </Link>
                 <ul>
                     <li>
-                        <a href='https://www.instagram.com/amorim_drywall/?hl=pt-br' target="_blank">
+                        <a href='https://www.instagram.com/amorim_drywall/?hl=pt-br' target="_blank" rel="noreferrer noopener">
                             <Icon size='1.5rem' reduce={true}>&#xF437;</Icon>
                         </a>
                     </li>
                     <li>
-                        <a href='https://wa.me/5513988393565' target="_blank">
+                        <a href='https://wa.me/5513988393565' target="_blank" rel="noreferrer noopener">
                             <Icon size='1.5rem' reduce={true}>&#xF618;</Icon>
                         </a>
                     </li>
