@@ -4,7 +4,7 @@
     background-color: var(--black);
     padding: 25px 25px;
     border-radius: 20px;
-    z-index: 5;
+    z-index: 10;
     position: fixed;
     top: 65vh;
     left: 5vw;
