@@ -10,10 +10,17 @@ const imageRoutes = require('./routes/imageRoutes')
 
 const app = express();
 
-app.use(cors());
+// app.use(cors());
 app.use(morgan('dev'));
 
 app.use(express.json());
+
+app.use((req, res, next) => {
+    res.header("Access-Control-Allow-Origin", "*")
+    res.header("Access-Control-Allow-Methods", "GET,PUT,POST,PATCH,DELETE")
+    app.use(cors())
+    next()
+});
 
 app.use('/auth', userRoutes)
 app.use('/job', jobRoutes)
