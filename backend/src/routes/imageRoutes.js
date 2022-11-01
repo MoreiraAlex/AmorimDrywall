@@ -126,7 +126,7 @@ router.delete('/:id', checkToken, async (req, res) => {
             return res.status(404).json({message: 'Imagem não encontrada'})
         }
 
-        if(process.env.STORAGE === 's3'){
+        if(process.env.STORAGE === 'S3'){
             const s3 = new aws.S3();
 
             s3.deleteObject({
