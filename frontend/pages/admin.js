@@ -130,9 +130,8 @@ export default function Admin() {
         images.filter(image => image.jobId == id).map(image => {
             api.delete(`upload/${image.id}`)
             .then()
-            .catch((error) => {
+            .catch(() => {
                 setLoading(false)
-                console.log(error)
             })
         })
 
@@ -151,13 +150,12 @@ export default function Admin() {
                     setImages(response.data)
                     setLoading(false)
                 })
-                .catch((error) => {
-                    console.log(error)
+                .catch(() => {
+                    setLoading(false)
                 })
             })
-            .catch((error) => {
+            .catch(() => {
                 setLoading(false)
-                console.log(error)
             })            
         }
     }, [refresh])
