@@ -140,24 +140,22 @@ export default function Admin() {
     }
 
     useEffect(() => {
-        return () => {
-            api.get('job')
-            .then(response => {
-                setData(response.data)
+        api.get('job')
+        .then(response => {
+            setData(response.data)
 
-                api.get('upload')
-                .then(response => {
-                    setImages(response.data)
-                    setLoading(false)
-                })
-                .catch(() => {
-                    setLoading(false)
-                })
+            api.get('upload')
+            .then(response => {
+                setImages(response.data)
+                setLoading(false)
             })
             .catch(() => {
                 setLoading(false)
-            })            
-        }
+            })
+        })
+        .catch(() => {
+            setLoading(false)
+        })   
     }, [refresh])
 
   return (    
