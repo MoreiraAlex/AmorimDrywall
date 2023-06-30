@@ -16,12 +16,16 @@ module.exports = {
         light: '#dcb36f',
       },
       textColor: {
-        base: '#bc8a44',
+        baseColor: '#bc8a44',
         light: '#dcb36f',
       },
       fontFamily: {
         primary: 'var(--font-workSans)',
         alt: 'var(--font-roboto)'
+      },
+      borderColor: {
+        base: '#bc8a44',
+        light: '#dcb36f',
       }
     },
   },

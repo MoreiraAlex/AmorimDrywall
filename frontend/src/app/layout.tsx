@@ -163,7 +163,151 @@ export default function RootLayout({ children }: { children: ReactNode }) {
         </header>
         {/* <Header /> */}
         <main>{children}</main>
-        <footer></footer>
+        <footer className="relative overflow-x-hidden bg-[url('/footer-bg.jpg')] bg-cover bg-top after:absolute after:inset-0 after:bg-zinc-950 after:opacity-90">
+          <section className="relative z-20 space-y-5 p-5 md:container md:mx-auto md:grid md:grid-cols-3 md:items-center md:gap-x-20 md:p-0 md:px-10 md:py-8 lg:grid-cols-7 lg:gap-16 lg:space-y-0 lg:px-0">
+            <div className="col-span-3 text-center lg:col-span-2 lg:col-start-2">
+              <Link href="/">
+                <Image
+                  src={Logo}
+                  quality={100}
+                  alt="Logo da pagina"
+                  className="mx-auto w-32"
+                  priority
+                />
+              </Link>
+              <p className="text-xs text-light md:text-sm">
+                Lorem ipsum dolor sit amet consectetur, adipisicing elit.
+                Numquam ipsa quam maiores quaerat ea odit id perspiciatis, qui
+                omnis quisquam dolores!
+              </p>
+            </div>
+            <div className="col-span-2 space-y-3">
+              <div>
+                <h2 className="font-alt text-xl text-white">Páginas</h2>
+                <hr className="border-light" />
+              </div>
+              <ul className="grid grid-cols-2">
+                <li>
+                  <Link
+                    href="#"
+                    className="text-sm capitalize text-light hover:text-baseColor"
+                  >
+                    Home
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    className="text-sm capitalize text-light hover:text-baseColor"
+                    href="#"
+                  >
+                    Sobre Nós
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    className="text-sm capitalize text-light hover:text-baseColor"
+                    href="#"
+                  >
+                    Serviços
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    className="text-sm capitalize text-light hover:text-baseColor"
+                    href="#"
+                  >
+                    Projetos
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    className="text-sm capitalize text-light hover:text-baseColor"
+                    href="#"
+                  >
+                    Contato
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    className="text-sm capitalize text-light hover:text-baseColor"
+                    href="#"
+                  >
+                    Privacidade e termos
+                  </Link>
+                </li>
+              </ul>
+            </div>
+            <div className="space-y-3">
+              <div>
+                <h2 className="font-alt text-xl text-white">Contato</h2>
+                <hr className="border-light" />
+              </div>
+              <ul className="flex flex-col items-center justify-center gap-1 sm:items-start">
+                <li>
+                  <Link
+                    href="https://wa.me/5513988393565"
+                    target="_blank"
+                    className="text-sm text-light hover:text-baseColor"
+                  >
+                    {'(13) 9 8839-3565'}
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    className="text-sm text-light hover:text-baseColor"
+                    href="https://www.instagram.com/amorim_drywall/?hl=pt-br"
+                    target="_blank"
+                  >
+                    @AmorimDrywall
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    className="text-sm text-light hover:text-baseColor"
+                    href="#"
+                  >
+                    amorimdrywall@gmail.com
+                  </Link>
+                </li>
+              </ul>
+            </div>
+            <div
+              className="static flex items-center justify-center gap-6 rounded bg-zinc-500 p-2 before:absolute before:left-0 before:h-full before:w-[100vw] before:-translate-x-full before:bg-zinc-500
+              before:content-[none] after:absolute after:right-0 after:h-full after:w-10 after:translate-x-full after:bg-zinc-500 after:content-[none]
+              after:[clip-path:polygon(0%_0%,100%_50%,0%_100%)] md:absolute md:bottom-0 md:left-0 md:z-10 md:translate-x-0
+              md:translate-y-[50%] md:gap-8 md:rounded-none md:before:content-[''] md:after:content-['']
+              "
+            >
+              <a href="#" target="_blank">
+                <FaFacebookF className="fill-light text-red-600 hover:fill-base md:text-2xl" />
+              </a>
+              <a
+                href="https://www.instagram.com/amorim_drywall/?hl=pt-br"
+                target="_blank"
+              >
+                <FaInstagram className="fill-light hover:fill-base md:text-2xl" />
+              </a>
+              <a href="https://wa.me/5513988393565" target="_blank">
+                <FaWhatsapp className="fill-light hover:fill-base md:text-2xl" />
+              </a>
+            </div>
+          </section>
+          <section className="relative z-10 flex flex-col items-center justify-center gap-2 border-t-[1px] border-light p-5 text-center text-sm text-light md:container md:mx-auto">
+            <p className="">
+              AmorimDrywall &copy; 2023 Todos os direitos reservados
+            </p>
+            <p>
+              Desenvolvido por{' '}
+              <a
+                href="https://github.com/MoreiraAlex"
+                target="_blank"
+                className="hover:text-base"
+              >
+                Alex Moreira
+              </a>
+            </p>
+          </section>
+        </footer>
       </body>
     </html>
   )
