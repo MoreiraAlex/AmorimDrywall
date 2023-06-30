@@ -32,12 +32,12 @@ export default function RootLayout({ children }: { children: ReactNode }) {
     <html lang="pt-br">
       <body className={`${sans.variable} ${roboto.variable} font-primary`}>
         <header className="relative overflow-x-hidden bg-black">
-          <section className="relative mx-auto flex w-full flex-col items-start justify-between gap-5 pb-5 md:container md:flex-row md:items-center md:pb-0">
+          <section className="relative mx-auto flex w-full flex-col items-start justify-between gap-2 pt-2 md:container md:flex-row md:items-center md:gap-5 md:pt-0">
             <div
-              className="relative flex w-full items-center justify-between bg-zinc-500 px-6 before:absolute before:left-0 before:h-full
-                before:w-[100vw] before:-translate-x-full before:bg-zinc-500 before:content-[none] after:absolute after:right-0
-                after:h-full after:w-10 after:translate-x-full after:bg-zinc-500 after:content-[none]
-                after:[clip-path:polygon(0%_0%,100%_50%,0%_100%)] md:mr-10 md:w-[250px] md:justify-center md:p-0 md:before:content-[''] md:after:content-['']
+              className="relative order-2 flex w-full items-center justify-between bg-zinc-500 px-6 before:absolute before:left-0 before:h-full before:w-[100vw]
+                before:-translate-x-full before:bg-zinc-500 before:content-[none] after:absolute after:right-0 after:h-full
+                after:w-10 after:translate-x-full after:bg-zinc-500 after:content-[none] after:[clip-path:polygon(0%_0%,100%_50%,0%_100%)]
+                md:order-none md:mr-10 md:w-[250px] md:justify-center md:p-0 md:before:content-[''] md:after:content-['']
                 "
             >
               <Link href="/">
@@ -45,12 +45,13 @@ export default function RootLayout({ children }: { children: ReactNode }) {
                   src={Logo}
                   quality={100}
                   alt="Logo da pagina"
-                  width={160}
+                  // width={160}
+                  className="w-28 md:w-40"
                   priority
                 />
               </Link>
               <BiMenu
-                className="text-5xl text-light md:hidden"
+                className="text-4xl text-light md:hidden"
                 onClick={() => {
                   button ? setButton(false) : setButton(true)
                 }}
