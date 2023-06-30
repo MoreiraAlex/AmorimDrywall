@@ -92,7 +92,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
             </div>
           </section>
           <nav
-            className={`fixed right-0 top-0 z-20 flex h-screen w-screen flex-col justify-evenly bg-black py-6 transition-all md:visible md:static md:z-0 md:h-auto md:w-full md:translate-x-0 md:bg-zinc-100 ${
+            className={`fixed right-0 top-0 z-50 flex h-screen w-screen flex-col justify-evenly bg-black py-6 transition-all md:visible md:static md:z-0 md:h-auto md:w-full md:translate-x-0 md:bg-zinc-100 ${
               button ? 'translate-x-0' : 'translate-x-full'
             } `}
           >
@@ -242,7 +242,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
                 <h2 className="font-alt text-xl text-white">Contato</h2>
                 <hr className="border-light" />
               </div>
-              <ul className="flex flex-col items-center justify-center gap-1 sm:items-start">
+              <ul className="flex flex-col items-center justify-center sm:items-start">
                 <li>
                   <Link
                     href="https://wa.me/5513988393565"
