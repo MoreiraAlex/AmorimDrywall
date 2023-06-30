@@ -1,3 +1,9 @@
+import Carousel from '@/components/carousel'
+
 export default function Home() {
-  return <main className="bg-black text-6xl text-white"></main>
+  return (
+    <>
+      <Carousel />
+    </>
+  )
 }

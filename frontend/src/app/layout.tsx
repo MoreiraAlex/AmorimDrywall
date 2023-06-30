@@ -92,7 +92,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
             </div>
           </section>
           <nav
-            className={`fixed right-0 top-0 z-50 flex h-screen w-screen flex-col justify-evenly bg-black py-6 transition-all md:visible md:static md:z-0 md:h-auto md:w-full md:translate-x-0 md:bg-zinc-100 ${
+            className={`fixed right-0 top-0 z-50 flex h-screen w-screen flex-col justify-evenly bg-black py-6 transition-all md:visible md:static md:z-0 md:h-auto md:w-full md:translate-x-0 md:bg-zinc-200 ${
               button ? 'translate-x-0' : 'translate-x-full'
             } `}
           >
@@ -100,7 +100,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
               <li>
                 <Link
                   href="#"
-                  className=" uppercase text-light hover:text-light md:text-base lg:text-xl"
+                  className=" uppercase text-light hover:text-light md:text-baseColor lg:text-xl"
                 >
                   Home
                 </Link>
@@ -108,7 +108,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
               <li>
                 <Link
                   href="#"
-                  className=" uppercase text-light hover:text-light md:text-base lg:text-xl"
+                  className=" uppercase text-light hover:text-light md:text-baseColor lg:text-xl"
                 >
                   Sobre Nós
                 </Link>
@@ -116,7 +116,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
               <li>
                 <Link
                   href="#"
-                  className=" uppercase text-light hover:text-light md:text-base lg:text-xl"
+                  className=" uppercase text-light hover:text-light md:text-baseColor lg:text-xl"
                 >
                   Serviços
                 </Link>
@@ -124,7 +124,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
               <li>
                 <Link
                   href="#"
-                  className=" uppercase text-light hover:text-light md:text-base lg:text-xl"
+                  className=" uppercase text-light hover:text-light md:text-baseColor lg:text-xl"
                 >
                   Projetos
                 </Link>
@@ -132,7 +132,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
               <li>
                 <Link
                   href="#"
-                  className=" uppercase text-light hover:text-light md:text-base lg:text-xl"
+                  className=" uppercase text-light hover:text-light md:text-baseColor lg:text-xl"
                 >
                   Contato
                 </Link>
