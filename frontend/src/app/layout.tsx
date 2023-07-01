@@ -71,7 +71,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
               <BiHome className="ml-5" fill="#dcb36f" />
             </CardHeader>
             <div
-              className="absolute bottom-0 right-0 z-10 hidden translate-y-[50%] items-center justify-center gap-8 bg-zinc-500 p-2 before:absolute before:left-0
+              className="absolute bottom-0 right-0 z-10 hidden translate-y-[50%] items-center justify-center gap-8 bg-zinc-500 p-2 before:absolute before:left-[1px]
               before:h-full before:w-10 before:-translate-x-full before:bg-zinc-500 before:[clip-path:polygon(0%_50%,100%_0%,100%_100%)] 
               after:absolute
               after:right-0 after:h-full after:w-[100vw] after:translate-x-full after:bg-zinc-500 md:flex
@@ -103,14 +103,6 @@ export default function RootLayout({ children }: { children: ReactNode }) {
                   className=" uppercase text-light hover:text-light md:text-baseColor lg:text-xl"
                 >
                   Home
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="#"
-                  className=" uppercase text-light hover:text-light md:text-baseColor lg:text-xl"
-                >
-                  Sobre Nós
                 </Link>
               </li>
               <li>
@@ -193,14 +185,6 @@ export default function RootLayout({ children }: { children: ReactNode }) {
                     className="text-sm capitalize text-light hover:text-baseColor"
                   >
                     Home
-                  </Link>
-                </li>
-                <li>
-                  <Link
-                    className="text-sm capitalize text-light hover:text-baseColor"
-                    href="#"
-                  >
-                    Sobre Nós
                   </Link>
                 </li>
                 <li>

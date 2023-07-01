@@ -4,7 +4,7 @@ import 'slick-carousel/slick/slick.css'
 import 'slick-carousel/slick/slick-theme.css'
 import { IoIosArrowDown } from 'react-icons/io'
 import { VscTools } from 'react-icons/vsc'
-import Link from 'next/link'
+import { Link } from 'react-scroll'
 
 export default function Carousel() {
   var settings = {
@@ -36,7 +36,7 @@ export default function Carousel() {
           <h2 className="w-2/3 font-alt text-2xl text-light md:text-4xl">
             Lorem ipsum dolor sit amet consectetur adipisicing elit.
           </h2>
-          <Link href="#">
+          <Link to="about" spy={true} smooth={true} offset={0} duration={800}>
             <IoIosArrowDown className="animate-bounce text-6xl text-baseColor transition hover:scale-125" />
           </Link>
         </div>
@@ -56,7 +56,7 @@ export default function Carousel() {
             Quo animi quam consequatur architecto quasi neque quisquam
             cupiditate sit?
           </h2>
-          <Link href="#">
+          <Link to="about" spy={true} smooth={true} offset={0} duration={800}>
             <IoIosArrowDown className="animate-bounce text-6xl text-baseColor transition hover:scale-125" />
           </Link>
         </div>
@@ -76,7 +76,7 @@ export default function Carousel() {
             Sequi quas, pariatur earum cupiditate temporibus quo porro quidem ut
             corrupti nam veritatis labore.
           </h2>
-          <Link href="#">
+          <Link to="about" spy={true} smooth={true} offset={0} duration={800}>
             <IoIosArrowDown className="animate-bounce text-6xl text-baseColor transition hover:scale-125" />
           </Link>
         </div>
