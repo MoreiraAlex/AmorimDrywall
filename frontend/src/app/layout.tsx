@@ -1,5 +1,4 @@
 'use client'
-import CardHeader from '@/components/cardHeader'
 import './globals.css'
 import {
   Roboto_Condensed as robotoCondensed,
@@ -11,7 +10,7 @@ import { BiPhone, BiHome, BiMenu, BiX } from 'react-icons/bi'
 import Image from 'next/image'
 import Logo from 'public/logo.png'
 import { FaFacebookF, FaInstagram, FaWhatsapp } from 'react-icons/fa'
-import Header from '@/layout/header'
+import { Card } from '@/components/card'
 
 const roboto = robotoCondensed({
   subsets: ['latin'],
@@ -30,14 +29,16 @@ export default function RootLayout({ children }: { children: ReactNode }) {
 
   return (
     <html lang="pt-br">
-      <body className={`${sans.variable} ${roboto.variable} font-primary`}>
-        <header className="relative overflow-x-hidden bg-black">
-          <section className="relative mx-auto flex w-full flex-col items-start justify-between gap-2 pt-2 md:container md:flex-row md:items-center md:gap-5 md:pt-0">
+      <body
+        className={`${sans.variable} ${roboto.variable} relative font-primary`}
+      >
+        <header className="absolute right-0 top-0 z-10 h-36 w-screen overflow-x-hidden bg-gradient-to-t from-transparent via-zinc-700 to-zinc-950 md:relative md:h-auto md:w-full md:bg-zinc-950 md:bg-none">
+          <section className="relative mx-auto flex w-full items-center justify-between gap-2 pt-2 md:container md:flex-row md:items-center md:gap-5 md:pt-0">
             <div
-              className="relative order-2 flex w-full items-center justify-between bg-zinc-500 px-6 before:absolute before:left-0 before:h-full before:w-[100vw]
-                before:-translate-x-full before:bg-zinc-500 before:content-[none] after:absolute after:right-0 after:h-full
-                after:w-10 after:translate-x-full after:bg-zinc-500 after:content-[none] after:[clip-path:polygon(0%_0%,100%_50%,0%_100%)]
-                md:order-none md:mr-10 md:w-[250px] md:justify-center md:p-0 md:before:content-[''] md:after:content-['']
+              className="relative flex w-full items-center justify-between px-6 before:absolute before:left-0 before:h-full before:w-[100vw] before:-translate-x-full
+                before:bg-zinc-500 before:content-[none] after:absolute after:right-0 after:h-full after:w-10
+                after:translate-x-full after:bg-zinc-500 after:content-[none] after:[clip-path:polygon(0%_0%,100%_50%,0%_100%)] md:order-none
+                md:mr-10 md:w-[250px] md:justify-center md:bg-zinc-500 md:p-0 md:before:content-[''] md:after:content-['']
                 "
             >
               <Link href="/">
@@ -45,8 +46,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
                   src={Logo}
                   quality={100}
                   alt="Logo da pagina"
-                  // width={160}
-                  className="w-28 md:w-40"
+                  className="w-32 md:w-40"
                   priority
                 />
               </Link>
@@ -57,19 +57,20 @@ export default function RootLayout({ children }: { children: ReactNode }) {
                 }}
               />
             </div>
-            <CardHeader
-              title="(13) 9 8839-3565"
-              subtitle="amorimdrywall@gmail.com"
-            >
-              <BiPhone className="ml-5" fill="#dcb36f" />
-            </CardHeader>
-            <CardHeader
-              title="Baixada Santista"
-              subtitle="Santos, São Vicente e
-              Praia Grande."
-            >
-              <BiHome className="ml-5" fill="#dcb36f" />
-            </CardHeader>
+            <Card.Root className="hidden md:block">
+              <Card.Icon icon={BiPhone} className="fill-light" />
+              <Card.Section>
+                <Card.Title text="(13) 9 8839-3565" />
+                <Card.Subtitle text="amorimdrywall@gmail.com" />
+              </Card.Section>
+            </Card.Root>
+            <Card.Root className="hidden md:block">
+              <Card.Icon icon={BiHome} className="fill-light" />
+              <Card.Section>
+                <Card.Title text="Baixada Santista" />
+                <Card.Subtitle text="Atendemos toda a região do litoral" />
+              </Card.Section>
+            </Card.Root>
             <div
               className="absolute bottom-0 right-0 z-10 hidden translate-y-[50%] items-center justify-center gap-8 bg-zinc-500 p-2 before:absolute before:left-[1px]
               before:h-full before:w-10 before:-translate-x-full before:bg-zinc-500 before:[clip-path:polygon(0%_50%,100%_0%,100%_100%)] 
@@ -139,7 +140,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
             </ul>
             <div className="flex justify-evenly md:hidden">
               <a href="#" target="_blank">
-                <FaFacebookF className="fill-light text-2xl text-red-600 hover:fill-base" />
+                <FaFacebookF className="fill-light text-2xl hover:fill-base" />
               </a>
               <a
                 href="https://www.instagram.com/amorim_drywall/?hl=pt-br"
@@ -153,7 +154,6 @@ export default function RootLayout({ children }: { children: ReactNode }) {
             </div>
           </nav>
         </header>
-        {/* <Header /> */}
         <main>{children}</main>
         <footer className="relative overflow-x-hidden bg-[url('/footer-bg.jpg')] bg-cover bg-top after:absolute after:inset-0 after:bg-zinc-950 after:opacity-90">
           <section className="relative z-20 space-y-5 p-5 md:container md:mx-auto md:grid md:grid-cols-3 md:items-center md:gap-x-20 md:p-0 md:px-10 md:py-8 lg:grid-cols-7 lg:gap-16 lg:space-y-0 lg:px-0">
@@ -285,7 +285,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
               <a
                 href="https://github.com/MoreiraAlex"
                 target="_blank"
-                className="hover:text-base"
+                className="hover:text-baseColor"
               >
                 Alex Moreira
               </a>

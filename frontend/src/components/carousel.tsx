@@ -21,16 +21,16 @@ export default function Carousel() {
     arrows: false,
   }
   return (
-    <Slider className="h-[75vh]" {...settings}>
+    <Slider className="h-[100vh] md:h-[75vh]" {...settings}>
       <div
-        className={`relative h-[75vh] bg-[url(https://amorimdrywall.alexmoreira.dev.br/_next/static/media/home.64a625d3.jpg)]
-          bg-cover bg-center bg-no-repeat before:absolute before:inset-0 before:bg-zinc-950 before:opacity-70 
+        className={`relative h-[100vh] bg-[url(https://amorimdrywall.alexmoreira.dev.br/_next/static/media/home.64a625d3.jpg)] bg-cover
+          bg-center bg-no-repeat before:absolute before:inset-0 before:bg-zinc-950 before:opacity-70 md:h-[75vh] 
       `}
       >
-        <div className="relative z-10 flex h-full flex-col items-center justify-center gap-10 text-center">
+        <div className="container relative z-10 mx-auto flex h-full flex-col items-center justify-center gap-10 text-center">
           <VscTools
             className="h-20 w-20 rounded bg-base p-3 text-4xl text-white 
-              [clip-path:polygon(0%_25%,25%_0%,50%_0%,75%_0%,100%_25%,100%_75%,75%_100%,25%_100%,0%_75%)]
+            [clip-path:polygon(0%_25%,25%_0%,50%_0%,75%_0%,100%_25%,100%_75%,75%_100%,25%_100%,0%_75%)]
             "
           />
           <h2 className="w-2/3 font-alt text-2xl text-light md:text-4xl">
@@ -42,11 +42,11 @@ export default function Carousel() {
         </div>
       </div>
       <div
-        className={`h-[75vh] bg-[url(https://amorimdrywall.alexmoreira.dev.br/_next/static/media/sanca.f8c529b2.jpg)] bg-cover bg-center bg-no-repeat
-          before:absolute before:inset-0 before:bg-zinc-950 before:opacity-70
+        className={`h-[100vh] bg-[url(https://amorimdrywall.alexmoreira.dev.br/_next/static/media/sanca.f8c529b2.jpg)] bg-cover bg-center bg-no-repeat before:absolute
+          before:inset-0 before:bg-zinc-950 before:opacity-70 md:h-[75vh]
         `}
       >
-        <div className="relative z-10 flex h-full flex-col items-center justify-center gap-10 text-center">
+        <div className="container relative z-10 mx-auto flex h-full flex-col items-center justify-center gap-10 text-center">
           <VscTools
             className="h-20 w-20 rounded bg-base p-3 text-4xl text-white 
               [clip-path:polygon(0%_25%,25%_0%,50%_0%,75%_0%,100%_25%,100%_75%,75%_100%,25%_100%,0%_75%)]
@@ -62,11 +62,11 @@ export default function Carousel() {
         </div>
       </div>
       <div
-        className={`h-[75vh] bg-[url(https://renovation.thememove.com/wp-content/uploads/2015/04/project05-380x270.jpg)] bg-cover bg-center bg-no-repeat
-          before:absolute before:inset-0 before:bg-zinc-950 before:opacity-70
+        className={`h-[100vh] bg-[url(https://renovation.thememove.com/wp-content/uploads/2015/04/project05-380x270.jpg)] bg-cover bg-center bg-no-repeat before:absolute
+          before:inset-0 before:bg-zinc-950 before:opacity-70 md:h-[75vh]
         `}
       >
-        <div className="relative z-10 flex h-full flex-col items-center justify-center gap-10 text-center">
+        <div className="container relative z-10 mx-auto flex h-full flex-col items-center justify-center gap-10 text-center">
           <VscTools
             className="h-20 w-20 rounded bg-base p-3 text-4xl text-white 
               [clip-path:polygon(0%_25%,25%_0%,50%_0%,75%_0%,100%_25%,100%_75%,75%_100%,25%_100%,0%_75%)]

@@ -5,14 +5,11 @@ interface Iprops extends HTMLAttributes<HTMLElement> {
   icon: ElementType
 }
 
-export default function ButtonIcon({ icon: Icon, ...rest }: Iprops) {
+export default function CardIcon({ icon: Icon, ...rest }: Iprops) {
   return (
     <Icon
       {...rest}
-      className={twMerge(
-        'text-2xl text-baseColor transition group-hover:text-white',
-        rest.className
-      )}
+      className={twMerge('text-2xl md:text-4xl', rest.className)}
     />
   )
 }

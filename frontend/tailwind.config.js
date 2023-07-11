@@ -26,6 +26,15 @@ module.exports = {
       borderColor: {
         base: '#bc8a44',
         light: '#dcb36f',
+      },
+      animation: {
+        teste: 'teste 1s linear' 
+      },
+      keyframes: {
+        teste: {
+          '0%': { transform: 'translate(-100%,0)'  },
+          '100%': { transform: 'translate(0,0)'  },
+        }
       }
     },
   },
