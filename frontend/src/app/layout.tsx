@@ -32,7 +32,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
       <body
         className={`${sans.variable} ${roboto.variable} relative font-primary`}
       >
-        <header className="absolute right-0 top-0 z-10 h-36 w-screen overflow-x-hidden bg-gradient-to-t from-transparent via-zinc-700 to-zinc-950 md:relative md:h-auto md:w-full md:bg-zinc-950 md:bg-none">
+        <header className="absolute right-0 top-0 z-30 h-36 w-screen overflow-x-hidden bg-gradient-to-t from-transparent via-zinc-700 to-zinc-950 md:relative md:h-auto md:w-full md:bg-zinc-950 md:bg-none">
           <section className="relative mx-auto flex w-full items-center justify-between gap-2 pt-2 md:container md:flex-row md:items-center md:gap-5 md:pt-0">
             <div
               className="relative flex w-full items-center justify-between px-6 before:absolute before:left-0 before:h-full before:w-[100vw] before:-translate-x-full
@@ -57,14 +57,14 @@ export default function RootLayout({ children }: { children: ReactNode }) {
                 }}
               />
             </div>
-            <Card.Root className="hidden md:block">
+            <Card.Root className="hidden md:flex">
               <Card.Icon icon={BiPhone} className="fill-light" />
               <Card.Section>
                 <Card.Title text="(13) 9 8839-3565" />
                 <Card.Subtitle text="amorimdrywall@gmail.com" />
               </Card.Section>
             </Card.Root>
-            <Card.Root className="hidden md:block">
+            <Card.Root className="hidden md:flex">
               <Card.Icon icon={BiHome} className="fill-light" />
               <Card.Section>
                 <Card.Title text="Baixada Santista" />
@@ -100,7 +100,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
             <ul className="flex h-[50vh] flex-col items-center justify-evenly font-alt text-xl md:container md:mx-auto md:h-auto md:w-2/3 md:flex-row md:justify-evenly">
               <li>
                 <Link
-                  href="#"
+                  href="/"
                   className=" uppercase text-light hover:text-light md:text-baseColor lg:text-xl"
                 >
                   Home
@@ -108,7 +108,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
               </li>
               <li>
                 <Link
-                  href="#"
+                  href="manun"
                   className=" uppercase text-light hover:text-light md:text-baseColor lg:text-xl"
                 >
                   Serviços
@@ -116,7 +116,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
               </li>
               <li>
                 <Link
-                  href="#"
+                  href="manun"
                   className=" uppercase text-light hover:text-light md:text-baseColor lg:text-xl"
                 >
                   Projetos
@@ -124,7 +124,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
               </li>
               <li>
                 <Link
-                  href="#"
+                  href="manun"
                   className=" uppercase text-light hover:text-light md:text-baseColor lg:text-xl"
                 >
                   Contato
@@ -181,7 +181,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
               <ul className="grid grid-cols-2">
                 <li>
                   <Link
-                    href="#"
+                    href="/"
                     className="text-sm capitalize text-light hover:text-baseColor"
                   >
                     Home
@@ -190,7 +190,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
                 <li>
                   <Link
                     className="text-sm capitalize text-light hover:text-baseColor"
-                    href="#"
+                    href="manun"
                   >
                     Serviços
                   </Link>
@@ -198,7 +198,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
                 <li>
                   <Link
                     className="text-sm capitalize text-light hover:text-baseColor"
-                    href="#"
+                    href="manun"
                   >
                     Projetos
                   </Link>
@@ -206,7 +206,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
                 <li>
                   <Link
                     className="text-sm capitalize text-light hover:text-baseColor"
-                    href="#"
+                    href="manun"
                   >
                     Contato
                   </Link>
@@ -214,7 +214,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
                 <li>
                   <Link
                     className="text-sm capitalize text-light hover:text-baseColor"
-                    href="#"
+                    href="policy"
                   >
                     Privacidade e termos
                   </Link>

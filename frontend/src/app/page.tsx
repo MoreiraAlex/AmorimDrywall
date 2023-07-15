@@ -11,10 +11,8 @@ import { VscTools } from 'react-icons/vsc'
 import Slider, { CustomArrowProps } from 'react-slick'
 import 'slick-carousel/slick/slick.css'
 import 'slick-carousel/slick/slick-theme.css'
-import img1 from 'public/logo.png'
-import img2 from 'public/footer-bg.jpg'
-import Image from 'next/image'
 import { useState } from 'react'
+import Link from 'next/link'
 
 export default function Home() {
   const [button, setButton] = useState(false)
@@ -30,6 +28,7 @@ export default function Home() {
       transform: 'translate(100%, 0)',
       right: 0,
     }
+
     if (slideCount && currentSlide === slideCount - 1)
       styleObject = { ...styleObject, opacity: '0.5' }
 
@@ -53,6 +52,7 @@ export default function Home() {
       transform: 'translate(-100%, 0)',
       left: 0,
     }
+
     if (currentSlide === 0) styleObject = { ...styleObject, opacity: '0.5' }
 
     return (
@@ -103,10 +103,12 @@ export default function Home() {
                 adipisci.
               </p>
             </div>
-            <Button.Root>
-              <Button.Span>Veja Mais</Button.Span>
-              <Button.Icon icon={MdKeyboardDoubleArrowRight} />
-            </Button.Root>
+            <Link href="manun" className="block">
+              <Button.Root>
+                <Button.Span>Veja Mais</Button.Span>
+                <Button.Icon icon={MdKeyboardDoubleArrowRight} />
+              </Button.Root>
+            </Link>
           </div>
         </div>
       </section>
@@ -184,10 +186,12 @@ export default function Home() {
                 <li>Lorem ipsum dolor sit.</li>
               </ul>
             </div>
-            <Button.Root>
-              <Button.Span>Veja nossos serviços</Button.Span>
-              <Button.Icon icon={MdKeyboardDoubleArrowRight} />
-            </Button.Root>
+            <Link href="manun" className="block">
+              <Button.Root>
+                <Button.Span>Veja nossos serviços</Button.Span>
+                <Button.Icon icon={MdKeyboardDoubleArrowRight} />
+              </Button.Root>
+            </Link>
           </div>
           <div
             className="col-span-2 row-span-2 hidden h-full w-full bg-[url(https://renovation.thememove.com/wp-content/uploads/2020/06/home-calculator-03.jpg)] bg-cover
@@ -240,20 +244,27 @@ export default function Home() {
               }}
             ></div>
           </div>
-          <Button.Root className="mx-auto bg-base hover:bg-transparent">
-            <Button.Span className="text-white group-hover:text-baseColor">
-              Veja nossa galeria
-            </Button.Span>
-            <Button.Icon
-              icon={MdKeyboardDoubleArrowRight}
-              className="text-white group-hover:text-baseColor"
-            />
-          </Button.Root>
+          <Link href="manun" className="block">
+            <Button.Root className="mx-auto bg-base hover:bg-transparent">
+              <Button.Span className="text-white group-hover:text-baseColor">
+                Veja nossa galeria
+              </Button.Span>
+              <Button.Icon
+                icon={MdKeyboardDoubleArrowRight}
+                className="text-white group-hover:text-baseColor"
+              />
+            </Button.Root>
+          </Link>
         </div>
         <div
+          id="modal"
           className={`fixed inset-0 z-50 flex items-center justify-center bg-zinc-950 bg-opacity-90 ${
             button ? 'fixed' : 'hidden'
           }`}
+          onClick={(e) => {
+            if ((e.target as HTMLElement).id === 'modal')
+              button ? setButton(false) : setButton(true)
+          }}
         >
           <BiX
             className="absolute right-5 top-5 text-5xl text-light hover:cursor-pointer hover:text-baseColor"
@@ -297,11 +308,13 @@ export default function Home() {
             em contato conosco. Nossa equipe dará um retorno o mais breve
             possível.
           </p>
-          <Button.Root className="bg-base hover:bg-transparent">
-            <Button.Span className="text-white group-hover:text-baseColor">
-              Fale conosco
-            </Button.Span>
-          </Button.Root>
+          <Link href="manun" className="block">
+            <Button.Root className="bg-base hover:bg-transparent">
+              <Button.Span className="text-white group-hover:text-baseColor">
+                Fale conosco
+              </Button.Span>
+            </Button.Root>
+          </Link>
         </div>
       </section>
     </>
